@@ -1,0 +1,64 @@
+﻿@model B_R.Models.Area
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+
+    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
+    @*<title>Brasil Refino</title>*@
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
+            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <nav id="nav">
+                <a href="@Url.Action("Index","Area")" class="  ">Voltar </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <header>
+                <h1>Cadastrar Área</h1>
+            </header>
+
+            <div class="flex text-center ">
+
+                <form method="post" action="@Url.Action("Editar","Area")" style="width:500px;margin-bottom:1%">
+
+
+                    <input style="margin-bottom: 1%;" type="text" name="codigo" id="codigo" value="@Model.codigo" placeholder="codigo">
+                    <input style="margin-bottom: 1%;" type="text" name="nome" id="nome" value="@Model.nome" placeholder="nome">
+
+                    <button class="button" style="box-shadow:none">Editar</button><br />
+                    <a class="button" href="@Url.Action("Index","Area")" style="box-shadow:none">Voltar</a>
+                </form>
+            </div>
+
+            <footer></footer>
+        </div>
+    </section>
+
+
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/skel.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+
+</body>
+</html>

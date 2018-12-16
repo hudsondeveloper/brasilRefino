@@ -1,0 +1,90 @@
+﻿@model B_R.Models.Equipamento
+
+@{
+    Layout = null;
+var idArea = Session["areaid"];
+}    
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+
+    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
+    @*<title>Brasil Refino</title>*@
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
+            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <header>
+                <h1>Cadastrar Área</h1>
+            </header>
+
+            <div class="flex text-center ">
+
+                <form method="post" action="@Url.Action("Editar","Equipamento",new {idArea = idArea })" style="width:500px;margin-bottom:1%">
+
+
+                    @*<input style="margin-bottom: 1%;" type="text" name="reg" id="reg" value="@Model.reg" placeholder="reg">*@
+                    <input style="margin-bottom: 1%;" type="text" name="tag" id="tag" value="@Model.tag" placeholder="tag">
+                    <input style="margin-bottom: 1%;" type="text" name="descricao_equipamento" id="descricao_equipamento" value="@Model.descricao_equipamento" placeholder="descricaoEquipamento">
+                    <select style="margin-bottom: 1%;" name="situacao" id="situacao">
+                        <option value="">- situação -</option>
+                        @if (Model.situacao == B_R.Models.situacao.ATIVO)
+                        {
+                            <option selected value="ATIVO">ATIVO</option>
+                            <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
+                        }
+                        else
+                        {                
+                            <option  value="ATIVO">ATIVO</option>
+                            <option selected value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
+                        }
+                    </select>
+                    <select style="margin-bottom: 1%;" name="status_Doc" id="status_Doc">
+                        <option value="">- status do documento -</option>
+                        @if (Model.status_Doc == B_R.Models.status_Doc.ATUALIZADO)
+                        {
+                            <option selected value="ATUALIZADO">ATUALIZADO</option>
+                            <option value="PENDENTE">PENDENTE</option>
+                        }
+                        else
+                        {
+                            <option selected value="PENDENTE">PENDENTE</option>
+                            <option  value="ATUALIZADO">ATUALIZADO</option>
+                        }
+                    </select>
+                    <input style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="@Model.descricao" placeholder="descricao" />
+
+                    <button class="button" style="box-shadow:none">Editar</button><br />
+                    <a class="button" href="@Url.Action("Index","Equipamento",new { id = idArea})" style="box-shadow:none">Voltar</a>
+                </form>
+            </div>
+
+            <footer></footer>
+        </div>
+    </section>
+
+
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/skel.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+
+</body>
+</html>

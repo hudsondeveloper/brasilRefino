@@ -1,0 +1,144 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+
+    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
+    @*<title>Brasil Refino</title>*@
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+    <script>
+                function validarSenha(){
+                  var  NovaSenha = document.getElementById('senha');
+                  var  CNovaSenha =document.getElementById('confirmar');
+
+                    if (NovaSenha.value != CNovaSenha.value)
+                        alert("SENHAS DIFERENTES! FAVOR DIGITAR SENHAS IGUAIS");
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
+            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <header>
+                <h1>Cadastro</h1>
+            </header>
+
+            <div class="flex text-center ">
+
+                <form method="post" action="@Url.Action("Cadastrar","Home")" style="width:500px;margin-bottom:1%">
+
+
+                    <input style="margin-bottom: 1%;" type="text" name="Nome" id="Nome" value="" placeholder="Nome" required>
+                    <input style="margin-bottom: 1%;" type="email" name="Email" id="Email" value="" placeholder="Email" required>
+                    <input style="margin-bottom: 1%;" type="text" name="Cargo" id="Cargo" value="" placeholder="Cargo">
+                    <select style="margin-bottom: 1%;" name="Sexo" id="Sexo" required>
+                        <option value="">- Sexo -</option>
+                        <option value="M">Msculino</option>
+                        <option value="F">Feminino</option>
+                    </select>
+                    <input style="margin-bottom: 1%;" type="text" name="cpf" id="cpf" value="" placeholder="cpf" required>
+                    <input style="margin-bottom: 1%;" type="text" name="CodCracha" id="CodCracha" value="" placeholder="CodCracha" required>
+                    <input style="margin-bottom: 1%;" type="password" name="senha" id="senha" value="" placeholder="senha" required>
+                    <input style="margin-bottom: 1%;" type="password" name="confirmar" id="confirmar" value="" placeholder="confirmar senha" required>
+
+                    <button class="button" style="box-shadow:none" onClick="validarSenha()">Cadastrar</button>
+                </form>
+            </div>
+
+            <footer>
+                @*<a href="#" class="button">Get Started</a>*@
+            </footer>
+        </div>
+    </section>
+
+
+    <!-- Three -->
+    @*<section id="three" class="wrapper align-center">
+            <div class="inner">
+                <div class="flex flex-2">
+                    <article>
+                        <div class="image round">
+                            <img src="images/pic01.jpg" alt="Pic 01" />
+                        </div>
+                        <header>
+                            <h3>Lorem ipsum<br /> dolor amet nullam</h3>
+                        </header>
+                        <p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
+                        <footer>
+                            <a href="#" class="button">Learn More</a>
+                        </footer>
+                    </article>
+                    <article>
+                        <div class="image round">
+                            <img src="images/pic02.jpg" alt="Pic 02" />
+                        </div>
+                        <header>
+                            <h3>Sed feugiat<br /> tempus adipicsing</h3>
+                        </header>
+                        <p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
+                        <footer>
+                            <a href="#" class="button">Learn More</a>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>*@
+
+    <!-- Footer -->
+    @*<footer id="footer">
+            <div class="inner">
+
+                <h3>Get in touch</h3>
+
+                <form action="#" method="post">
+
+                    <div class="field half first">
+                        <label for="name">Name</label>
+                        <input name="name" id="name" type="text" placeholder="Name">
+                    </div>
+                    <div class="field half">
+                        <label for="email">Email</label>
+                        <input name="email" id="email" type="email" placeholder="Email">
+                    </div>
+                    <div class="field">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
+                    </div>
+                    <ul class="actions">
+                        <li><input value="Send Message" class="button alt" type="submit"></li>
+                    </ul>
+                </form>
+
+                <div class="copyright">
+                    &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
+                </div>
+
+            </div>
+        </footer>*@
+
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/skel.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+
+
+</body>
+</html>

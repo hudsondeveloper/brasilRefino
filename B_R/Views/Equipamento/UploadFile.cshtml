@@ -1,0 +1,116 @@
+﻿
+
+@{
+    Layout = null;
+    var idArea = Session["areaid"];
+}
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+
+    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
+    @*<title>Brasil Refino</title>*@
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/skel.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
+            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <nav id="nav">
+                <a href="@Url.Action("Index","Equipamento",new{id = @Session["areaid"] })" class="  ">Voltar </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <header>
+                <h1>Cadastrar Área</h1>
+            </header>
+
+            <div class="flex text-center ">
+
+        
+
+                @using (Html.BeginForm("UploadFile", "Equipamento", new { id = @Session["idequip"] ,idarea = @Session["areaid"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+
+                <div>
+                    @Html.TextBox("file", "", new { type = "file" }) <br />
+                    <br />
+
+
+                    <input type="submit" value="Upload" />
+
+                    @ViewBag.Message
+
+                </div>
+
+                }
+
+       
+                @model List<string>
+        
+                <table class="alt">
+                    <tr>
+                        <th>File Name</th>
+                        <th>Link</th>
+                    </tr>
+                    @if (Model != null)
+                    {
+
+                    
+                   
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item </td>
+                                <td>@Html.ActionLink("Download", "Download", new { ImageName = item , id = @Session["idequip"], idarea = @Session["areaid"] }) </td>
+                            </tr>
+                        }
+                    
+                        }
+                </table>
+
+            </div>
+
+            <footer></footer>
+        </div>
+    </section>
+
+
+
+    <style>
+        table.alt {
+            border-collapse: separate;
+            background-color: white;
+        }
+
+        table th {
+            color: #555;
+            font-size: 0.9em;
+            font-weight: 600;
+            padding: 0 0.75em 0.75em 0.75em;
+            text-align: left;
+            text-align: center;
+            font-size: 22px;
+        }
+    </style>
+
+</body>
+</html>

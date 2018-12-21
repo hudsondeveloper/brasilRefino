@@ -29,6 +29,7 @@
                 <a href="#">novo</a>
                 <a href="#">novo</a>
                 <a href="@Url.Action("Logoff","Home")">Logoff</a>
+                <a href="@Url.Action("Comentario","Area",new { id = @Session["idArea"]})" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -38,19 +39,19 @@
     <section id="banner">
         <div class="inner">
             <header>
-                <h1>Cadastrar Área</h1>
+                <h1>Cadastrar Comentario Area</h1>
             </header>
 
             <div class="flex text-center ">
 
-                <form method="post" action="@Url.Action("Cadastrar","Area")" style="width:500px;margin-bottom:1%">
+                <form method="post" action="@Url.Action("CadastrarComentario","Area",new { id = @Session["idArea"]})" style="width:500px;margin-bottom:1%">
 
 
-                    <input style="margin-bottom: 1%;" type="text" name="codigo" id="codigo" value="" placeholder="codigo">
-                    <input style="margin-bottom: 1%;" type="text" name="nome" id="nome" value="" placeholder="nome">
+                    <textarea style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="" placeholder="descricao"></textarea>
+     
 
                     <button class="button" style="box-shadow:none">Cadastrar</button><br />
-                    <a class="button" href="@Url.Action("Index","Area")" style="box-shadow:none">Voltar</a>
+                    <a class="button" href="@Url.Action("Comentario","Area",new { id = @Session["idArea"]})" style="box-shadow:none">Voltar</a>
                 </form>
             </div>
 

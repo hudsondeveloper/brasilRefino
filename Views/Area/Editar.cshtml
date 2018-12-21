@@ -16,16 +16,23 @@
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
 </head>
 <body>
-
     <!-- Header -->
     <header id="header">
         <div class="inner">
             @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
             <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <p class="logo" style="margin-top:3%">Bem vindo, @Session["user"]</p>
             <nav id="nav">
-                <a href="@Url.Action("Index","Area")" class="  ">Voltar </a>
+                <a href="@Url.Action("Index","Area")">Área</a>
+                <a href="#">solicitação</a>
+                <a href="#">relatorio</a>
+                <a href="#">plano de inspeção</a>
+                <a href="#">novo</a>
+                <a href="#">novo</a>
+                <a href="@Url.Action("Logoff","Home")">Logoff</a>
+                <a href="@Url.Action("Index","Area")" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
     </header>
 

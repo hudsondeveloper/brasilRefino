@@ -29,10 +29,18 @@
         <div class="inner">
             @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
             <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <p class="logo" style="margin-top:3%">Bem vindo, @Session["user"]</p>
             <nav id="nav">
-                <a href="@Url.Action("Index","Equipamento",new{id = @Session["areaid"] })" class="  ">Voltar </a>
+                <a href="@Url.Action("Index","Area")">Área</a>
+                <a href="#">solicitação</a>
+                <a href="#">relatorio</a>
+                <a href="#">plano de inspeção</a>
+                <a href="#">novo</a>
+                <a href="#">novo</a>
+                <a href="@Url.Action("Logoff","Home")">Logoff</a>
+                <a href="@Url.Action("Index","Equipamento",new{id = @Session["areaid"] })" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
     </header>
 
@@ -40,33 +48,33 @@
     <section id="banner">
         <div class="inner">
             <header>
-                <h1>Cadastrar Área</h1>
+                <h1>Anexos Área</h1>
             </header>
 
-            <div class="flex text-center ">
+            <div class=" text-center ">
 
-        
 
-                @using (Html.BeginForm("UploadFile", "Equipamento", new { id = @Session["idequip"] ,idarea = @Session["areaid"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                @using (Html.BeginForm("UploadFile", "Equipamento", new { id = @Session["idequip"], idarea = @Session["areaid"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
 
-                <div>
-                    @Html.TextBox("file", "", new { type = "file" }) <br />
-                    <br />
+                    <div>
+                        @Html.TextBox("file", "", new { type = "file" ,style= "color: #6aba8e;" }) <br />
+                        <br />
 
 
-                    <input type="submit" value="Upload" />
+                        <input type="submit" value="Upload" />
 
-                    @ViewBag.Message
+                        @ViewBag.Message
 
-                </div>
+                    </div>
 
                 }
 
-       
+
                 @model List<string>
-        
-                <table class="alt">
+
+                <table class="alt" style="color:black">
                     <tr>
                         <th>File Name</th>
                         <th>Link</th>
@@ -74,17 +82,17 @@
                     @if (Model != null)
                     {
 
-                    
-                   
+
+
                         foreach (var item in Model)
                         {
                             <tr>
                                 <td>@item </td>
-                                <td>@Html.ActionLink("Download", "Download", new { ImageName = item , id = @Session["idequip"], idarea = @Session["areaid"] }) </td>
+                                <td>@Html.ActionLink("Download", "Download", new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] }) </td>
                             </tr>
                         }
-                    
-                        }
+
+                    }
                 </table>
 
             </div>

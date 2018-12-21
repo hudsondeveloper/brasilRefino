@@ -37,15 +37,15 @@
     <section id="banner">
         <div class="inner">
             <header>
-                <h1>Cadastro</h1>
+                <h1>Cadastrar Usuário</h1>
             </header>
 
             <div class="flex text-center ">
 
                 <form method="post" action="@Url.Action("Cadastrar","Home")" style="width:500px;margin-bottom:1%">
 
-
-                    <input style="margin-bottom: 1%;" type="text" name="Nome" id="Nome" value="" placeholder="Nome" required>
+                    <input style="margin-bottom: 1%;" type="text" name="login" id="login" value="" placeholder="Login" required style="text-transform:lowercase">
+                    <input style="margin-bottom: 1%;" type="text" name="Nome" id="Nome" value="" placeholder="Nome" required style="text-transform:lowercase">
                     <input style="margin-bottom: 1%;" type="email" name="Email" id="Email" value="" placeholder="Email" required>
                     <input style="margin-bottom: 1%;" type="text" name="Cargo" id="Cargo" value="" placeholder="Cargo">
                     <select style="margin-bottom: 1%;" name="Sexo" id="Sexo" required>
@@ -53,10 +53,9 @@
                         <option value="M">Msculino</option>
                         <option value="F">Feminino</option>
                     </select>
-                    <input style="margin-bottom: 1%;" type="text" name="cpf" id="cpf" value="" placeholder="cpf" required>
-                    <input style="margin-bottom: 1%;" type="text" name="CodCracha" id="CodCracha" value="" placeholder="CodCracha" required>
-                    <input style="margin-bottom: 1%;" type="password" name="senha" id="senha" value="" placeholder="senha" required>
-                    <input style="margin-bottom: 1%;" type="password" name="confirmar" id="confirmar" value="" placeholder="confirmar senha" required>
+                    <input style="margin-bottom: 1%;" type="text" name="matricula" id="matricula" value="" placeholder="Matricula" required>
+                    <input style="margin-bottom: 1%;" type="password" name="senha" id="senha" value="" placeholder="senha - os seis primeiros digitos do cpf" required>
+                    <input style="margin-bottom: 1%;" type="password" name="confirmar" id="confirmar" value="" placeholder="confirmar senha - os seis primeiros digitos do cpf" required>
 
                     <button class="button" style="box-shadow:none" onClick="validarSenha()">Cadastrar</button>
                 </form>

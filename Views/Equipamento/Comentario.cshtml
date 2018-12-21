@@ -1,4 +1,4 @@
-﻿@model List<B_R.Models.LogEquipamento>
+﻿@model B_R.Models.Equipamento
 
 @{
     Layout = null;
@@ -8,6 +8,9 @@
 
 <html>
 <head>
+
+    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
+    @*<title>Brasil Refino</title>*@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
@@ -24,11 +27,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
-    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
-    @*<title>Brasil Refino</title>*@
-
 </head>
 <body>
+
+    <!-- Header -->
     <header id="header">
         <div class="inner">
             @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
@@ -42,50 +44,40 @@
                 <a href="#">novo</a>
                 <a href="#">novo</a>
                 <a href="@Url.Action("Logoff","Home")">Logoff</a>
-                <a href="@Url.Action("Index","Equipamento",new {id = Model.Select(X=>X.equipamento.area.Id).First()})" class="  " style="color:#83d0a5">Voltar </a>
+                <a href="@Url.Action("Index","Equipamento",new { id = Model.area.Id })" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
     </header>
-
 
     <!-- Banner -->
     <section id="banner">
         <div class="inner">
 
             <header>
-                <h1>Historico Equipamentos</h1>
+                <h1>Comentario Equipamento</h1>
             </header>
             <div class=" ">
                 <div>
-                    <table id="example" class="" style="width:100%">
+                    <a href="@Url.Action("CadastrarComentario","Equipamento",new { id = Model.Id})" class="button special logo">Novo Comentario</a>
+                    <table id="example" class="hover" style="width:100%">
                         <thead>
                             <tr style="background-color:white">
-                                <th>usuario</th>
-                                <th> acao</th>
-                                <th> anterior</th>
-                                <th> atual</th>
+                                <th> nome</th>
+                                <th>Comentario</th>
                                 <th>horario</th>
-
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.ComentariosEquipamento)
                             {
                                 <tr>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.user.Nome)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.acao)
+                                        @Html.DisplayFor(modelItem => item.descricao)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.anterior)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.alteracao)
-                                    </td>
-
                                     <td>
                                         @Html.DisplayFor(modelItem => item.horario)
                                     </td>
@@ -116,8 +108,7 @@
         "sUrl":           "",
         "sInfoThousands":  ",",
         "sLoadingRecords": "Cargando...",
-        },
-         //"searching": false,
+        }
         });
         } );
     </script>
@@ -166,11 +157,17 @@
             margin-bottom: 2%;
         }
 
+        #banner .inner {
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10005;
+            padding-top: 2em;
+        }
+
         body, input, select, textarea {
             color: #0c0c0c;
         }
     </style>
-
 
 
 

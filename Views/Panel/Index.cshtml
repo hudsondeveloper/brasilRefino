@@ -28,7 +28,7 @@
                 <a href="#">plano de inspeção</a>
                 <a href="#">novo</a>
                 <a href="#">novo</a>
-                <a href="@Url.Action("Index","Home")">Logoff</a>
+                <a href="@Url.Action("Logoff","Home")">Logoff</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -139,6 +139,14 @@
     <script src="~/Content/assets/js/skel.min.js"></script>
     <script src="~/Content/assets/js/util.js"></script>
     <script src="~/Content/assets/js/main.js"></script>
-
+    <style>
+        #banner .inner {
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10005;
+            padding-top: 2em;
+            height: 1080px;
+        }
+    </style>
 </body>
 </html>

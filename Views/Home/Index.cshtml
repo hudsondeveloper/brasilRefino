@@ -12,28 +12,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 </head>
-<body>
-
+<body >
     <!-- Header -->
     <header id="header">
         <div class="inner">
             @*<img src="~/Content/images/Logo-Default.png" class="logo" />
         menos esse  *@
-            <a href="@Url.Action("Index","Home")" class="logo"><strong></strong> BRASIL REFINO  </a>
-            <nav id="nav">
-                <form method="post" action="@Url.Action("Login","Home")">
+                <a href="@Url.Action("Index","Home")" class="logo"><strong></strong> BRASIL REFINO  </a>
+                <nav id="nav">
+                    <form method="post" action="@Url.Action("Login","Home")">
 
-                    <div class="6u 12u$(xsmall)" style="display:inline-flex;height: 35px; width: 411px">
-                        <input style="margin: 10px;height:35px;" type="text" name="login" id="login" value="" placeholder="Name">
-                        <input style="margin: 10px;height:35px;" type="password" name="password" id="password" value="" placeholder="Senha">
-                    </div>
-                    <button class="button" style="box-shadow:none">login</button>
-                    <a href="@Url.Action("Cadastrar","Home")" style="box-shadow:none">Cadastro</a>
-                </form>
-            </nav>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
+                        <div class="6u 12u$(xsmall)" style="display:inline-flex;height: 35px; width: 411px">
+                            <input style="margin: 10px;height:35px;" type="text" name="login" id="login" value="" placeholder="Name">
+                            <input style="margin: 10px;height:35px;" type="password" name="password" id="password" value="" placeholder="Senha">
+                        </div>
+                        <button class="button" style="box-shadow:none">login</button>
+                        <a href="@Url.Action("Cadastrar","Home")" style="box-shadow:none">Cadastro</a>
+                    </form>
+                </nav>
+                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            </div>
+
     </header>
 
     <!-- Banner -->
@@ -46,19 +47,19 @@
             <div class="flex ">
 
                 <div>
-                    <span class="icon fa-car"></span>
+                    <span ><i class="fas fa-paper-plane" style="font-size: 56px;color: #6cc091;"></i></span>
                     <h3>Solicitações</h3>
                     @*<p>Suspendisse amet ullamco</p>*@
                 </div>
 
                 <div>
-                    <span class="icon fa-camera"></span>
+                    <span><i class="fas fa-align-justify" style="font-size: 56px;color: #6cc091;"></i></span>
                     <h3>Relatorios</h3>
                     @*<p>Class aptent taciti ad litora</p>*@
                 </div>
 
                 <div>
-                    <span class="icon fa-bug"></span>
+                    <span><i class="fas fa-tachometer-alt"  style="font-size: 56px;color: #6cc091;"></i></span>
                     <h3>Controle</h3>
                     @*<p>Nulla vitae mauris non felis</p>*@
                 </div>
@@ -68,6 +69,7 @@
             <footer>
                 @*<a href="#" class="button">Get Started</a>*@
             </footer>
+
         </div>
     </section>
 
@@ -147,6 +149,7 @@
             position: relative;
             z-index: 10005;
             padding-top: 2em;
+            height: 1080px;
         }
     </style>
 </body>

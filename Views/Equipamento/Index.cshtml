@@ -44,7 +44,7 @@
                 <a href="#">plano de inspeção</a>
                 <a href="#">novo</a>
                 <a href="#">novo</a>
-                <a href="@Url.Action("Index","Home")">Logoff</a>
+                <a href="@Url.Action("Logoff","Home")">Logoff</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -57,13 +57,13 @@
             <header>
                 <h1>Equipamentos</h1>
             </header>
-            <div class="flex ">
+            <div class=" ">
                 <div>
                     <a href="@Url.Action("Cadastrar","Equipamento",new { id = idArea})" class="button special logo">Novo Equipamento</a>
                     <table id="example" class="hover" style="width:100%">
                         <thead>
                             <tr style="background-color:white">
-                                <th> reg</th>
+                                <!--<th> reg</th>-->
                                 <th> tag</th>
                                 <th>descricao do equipamento</th>
                                 <th>situacao</th>
@@ -71,6 +71,7 @@
                                 <th>descrição</th>
                                 <th>editar</th>
                                 <th>historico</th>
+                                <th>comentario</th>
                                 <th>anexos</th>
                             </tr>
                         </thead>
@@ -78,9 +79,9 @@
                             @foreach (var item in Model)
                             {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.reg)
-                                </td>
+                                <!--  <td>
+       Html.DisplayFor(modelItem => item.reg)
+    </td>-->
                                 <td>
                                     @Html.DisplayFor(modelItem => item.tag)
                                 </td>
@@ -104,7 +105,9 @@
                                     <a href="@Url.Action("Detalhe","Equipamento",new { id = item.Id })" style="box-shadow:none">HISTORICO</a>
                                 </td>
                                 <td>
-
+                                    <a href="@Url.Action("Comentario","Equipamento",new { id = item.Id })" style="box-shadow:none">COMENTARIO</a>
+                                </td>
+                                <td>
                                     <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = idArea })" style="box-shadow:none">ANEXO</a>
                                 </td>
                             </tr>
@@ -181,6 +184,9 @@
 
         table.dataTable, table.dataTable th, table.dataTable td {
             margin-bottom: 2%;
+        }
+        body, input, select, textarea {
+            color: #0c0c0c;
         }
     </style>
 

@@ -30,15 +30,24 @@
 </head>
 <body>
 
+
     <!-- Header -->
     <header id="header">
         <div class="inner">
             @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
             <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+            <p class="logo" style="margin-top:3%">Bem vindo, @Session["user"]</p>
             <nav id="nav">
-                <a href="@Url.Action("Index","Area")" class="  ">Voltar </a>
+                <a href="@Url.Action("Index","Area")">Área</a>
+                <a href="#">solicitação</a>
+                <a href="#">relatorio</a>
+                <a href="#">plano de inspeção</a>
+                <a href="#">novo</a>
+                <a href="#">novo</a>
+                <a href="@Url.Action("Logoff","Home")">Logoff</a>
+                <a href="@Url.Action("Index","Area")" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
+            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
     </header>
 
@@ -47,9 +56,9 @@
         <div class="inner">
 
             <header>
-                <h1>Áreas</h1>
+                <h1>Historico Áreas</h1>
             </header>
-            <div class="flex ">
+            <div class=" ">
                 <div>
                     <table id="example" class="" style="width:100%">
                         <thead>
@@ -65,23 +74,23 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.user.Nome)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.acao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.anterior)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.alteracao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.horario)
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.user.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.acao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.anterior)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.alteracao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.horario)
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                         <tfoot>
@@ -156,6 +165,9 @@
 
         table.dataTable, table.dataTable th, table.dataTable td {
             margin-bottom: 2%;
+        }
+        body, input, select, textarea {
+            color: #0c0c0c;
         }
     </style>
 

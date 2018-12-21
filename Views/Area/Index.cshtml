@@ -43,7 +43,7 @@
                 <a href="#">plano de inspeção</a>
                 <a href="#">novo</a>
                 <a href="#">novo</a>
-                <a href="@Url.Action("Index","Home")">Logoff</a>
+                <a href="@Url.Action("Logoff","Home")">Logoff</a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -56,7 +56,7 @@
             <header>
                 <h1>Áreas</h1>
             </header>
-            <div class="flex ">
+            <div class=" ">
                 <div>
                     <a href="@Url.Action("Cadastrar","Area")" class="button special logo">Nova Área</a>
                     <table id="example" class="hover" style="width:100%">
@@ -65,8 +65,9 @@
                                 <th> codigo</th>
                                 <th> nome</th>
                                 <th>Editar</th>
+                                <th>Historico</th>
+                                <th>Comentario</th>
                                 <th>Equipamentos</th>
-                                <th>Historico</th>                             
                             </tr>
                         </thead>
                         <tbody>
@@ -83,12 +84,13 @@
                                     <a href="@Url.Action("Editar","Area" ,new { id = item.Id })" style="box-shadow:none">EDITAR</a>
                                 </td>
                                 <td>
-
-                                    <a href="@Url.Action("Index","Equipamento",new { id = item.Id })" style="box-shadow:none">EQUIPAMENTOS</a>
+                                    <a href="@Url.Action("Detalhe","Area",new { id = item.Id })" style="box-shadow:none">HISTORICO</a>
                                 </td>
                                 <td>
-
-                                    <a href="@Url.Action("Detalhe","Area",new { id = item.Id })" style="box-shadow:none">HISTORICO</a>
+                                    <a href="@Url.Action("Comentario","Area",new { id = item.Id })" style="box-shadow:none">COMENTARIO</a>
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Index","Equipamento",new { id = item.Id })" style="box-shadow:none">EQUIPAMENTOS</a>
                                 </td>
                             </tr>
                             }
@@ -171,6 +173,9 @@
             position: relative;
             z-index: 10005;
             padding-top: 2em;
+        }
+        body, input, select, textarea {
+            color: #0c0c0c;
         }
 
     </style>

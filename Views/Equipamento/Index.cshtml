@@ -63,25 +63,25 @@
                     <table id="example" class="hover" style="width:100%">
                         <thead>
                             <tr style="background-color:white">
-                                <!--<th> reg</th>-->
-                                <th> tag</th>
-                                <th>descricao do equipamento</th>
-                                <th>situacao</th>
-                                <th>doc status</th>
-                                <th>descrição</th>
-                                <th>editar</th>
-                                <th>historico</th>
-                                <th>comentario</th>
-                                <th>anexos</th>
+                               <th> REG</th>
+                                <th> TAG</th>
+                                <th>DRESCRI. EQUIP.</th>
+                                <th>SITUAÇÃO</th>
+                                <th>DOC. STATUS</th>
+                                <th>DESCRIÇÃO</th>
+                                <th>EDIT.</th>
+                                <th>HIST.</th>
+                                <th>COMENT.</th>
+                                <th>ANEXOS</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
                             <tr>
-                                <!--  <td>
-       Html.DisplayFor(modelItem => item.reg)
-    </td>-->
+                             <td>
+       @Html.DisplayFor(modelItem => item.reg)
+    </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.tag)
                                 </td>
@@ -98,17 +98,17 @@
                                     @Html.DisplayFor(modelItem => item.descricao)
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Editar","Equipamento" ,new { id = item.Id })" style="box-shadow:none">EDITAR</a>
+                                    <a href="@Url.Action("Editar","Equipamento" ,new { id = item.Id })" style="box-shadow:none"><i class="fas fa-edit"></i></a>
                                 </td>
                                 <td>
 
-                                    <a href="@Url.Action("Detalhe","Equipamento",new { id = item.Id })" style="box-shadow:none">HISTORICO</a>
+                                    <a href="@Url.Action("Detalhe","Equipamento",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-archive"></i></a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Comentario","Equipamento",new { id = item.Id })" style="box-shadow:none">COMENTARIO</a>
+                                    <a href="@Url.Action("Comentario","Equipamento",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-file-alt"></i></a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = idArea })" style="box-shadow:none">ANEXO</a>
+                                    <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = idArea })" style="box-shadow:none"><i class="fas fa-download"></i></a>
                                 </td>
                             </tr>
                             }

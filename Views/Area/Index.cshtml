@@ -19,7 +19,7 @@
     <script src="~/Content/assets/js/skel.min.js"></script>
     <script src="~/Content/assets/js/util.js"></script>
     <script src="~/Content/assets/js/main.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.css" />
@@ -62,12 +62,12 @@
                     <table id="example" class="hover" style="width:100%">
                         <thead>
                             <tr style="background-color:white">
-                                <th> codigo</th>
-                                <th> nome</th>
-                                <th>Editar</th>
-                                <th>Historico</th>
-                                <th>Comentario</th>
-                                <th>Equipamentos</th>
+                                <th> CODIGO</th>
+                                <th> NOME</th>
+                                @*<th>Editar</th>*@
+                                <th>HIST.</th>
+                                <th>COMENT.</th>
+                                <th>EQUIP.</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,17 +80,17 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.nome)
                                 </td>
-                                <td>
+                                @*<td>
                                     <a href="@Url.Action("Editar","Area" ,new { id = item.Id })" style="box-shadow:none">EDITAR</a>
+                                </td>*@
+                                <td>
+                                    <a href="@Url.Action("Detalhe","Area",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-archive"></i></a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Detalhe","Area",new { id = item.Id })" style="box-shadow:none">HISTORICO</a>
+                                    <a href="@Url.Action("Comentario","Area",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-file-alt"></i></a>
                                 </td>
                                 <td>
-                                    <a href="@Url.Action("Comentario","Area",new { id = item.Id })" style="box-shadow:none">COMENTARIO</a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Index","Equipamento",new { id = item.Id })" style="box-shadow:none">EQUIPAMENTOS</a>
+                                    <a href="@Url.Action("Index","Equipamento",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-cogs"></i></a>
                                 </td>
                             </tr>
                             }

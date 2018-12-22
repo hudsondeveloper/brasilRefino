@@ -15,6 +15,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
     <!-- Scripts -->
     <script src="~/Content/assets/js/jquery.min.js"></script>
@@ -76,8 +77,8 @@
 
                 <table class="alt" style="color:black">
                     <tr>
-                        <th>File Name</th>
-                        <th>Link</th>
+                        <th>NOME ARQUIVO</th>
+                        <th>DOWNLOAD</th>
                     </tr>
                     @if (Model != null)
                     {
@@ -86,10 +87,14 @@
 
                         foreach (var item in Model)
                         {
-                            <tr>
-                                <td>@item </td>
-                                <td>@Html.ActionLink("Download", "Download", new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] }) </td>
-                            </tr>
+                    <tr>
+                        <td>@item </td>
+
+                       @*@Html.ActionLink("Download", "Download", new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] })*@
+                        <td>
+                            <a href="@Url.Action("Download","Equipamento" , new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] })" style="box-shadow:none"><i class="fas fa-download"></i></a>
+                        </td>
+                    </tr>
                         }
 
                     }

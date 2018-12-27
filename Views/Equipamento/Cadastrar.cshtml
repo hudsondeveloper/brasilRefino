@@ -48,15 +48,14 @@
                         <option value="ATIVO">ATIVO</option>
                         <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
                         <option value="EM_MONTAGEM">EM MONTAGEM</option>
-                        <option value="DESATIVADA">DESATIVADA</option>          
+                        <option value="DESATIVADA">DESATIVADA</option>
                     </select>
                     <select style="margin-bottom: 1%;" name="status_Doc" id="status_Doc">
                         <option value="">- status do documento -</option>
                         <option value="ATUALIZADO">ATUALIZADO</option>
                         <option value="PENDENTE">PENDENTE</option>
                     </select>
-                    <textarea style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="" placeholder="descricao"> descricao</textarea>
-
+                    <textarea style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="" placeholder="descricao"></textarea>
                     <button class="button" style="box-shadow:none">Cadastrar</button><br />
                     <a class="button" href="@Url.Action("Index","Equipamento",new { id = idArea})" style="box-shadow:none">Voltar</a>
                 </form>

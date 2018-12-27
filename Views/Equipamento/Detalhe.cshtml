@@ -42,7 +42,7 @@
                 <a href="#">novo</a>
                 <a href="#">novo</a>
                 <a href="@Url.Action("Logoff","Home")">Logoff</a>
-                <a href="@Url.Action("Index","Equipamento",new {id = Model.Select(X=>X.equipamento.area.Id).First()})" class="  " style="color:#83d0a5">Voltar </a>
+                <a href="@Url.Action("Index","Equipamento",new {id = Model.Select(X=>X.equipamento.area.Id).FirstOrDefault()})" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>

@@ -50,22 +50,11 @@
 
             <div class="flex text-center ">
 
-                <form method="post" action="@Url.Action("Cadastrar","Solicitacao")" style="width:500px;margin-bottom:1%">
+                <form method="post" action="@Url.Action("verificarArea","Solicitacao")" style="width:500px;margin-bottom:1%">
 
                     @Html.DropDownList("area", "Área")
       
-                    @Html.DropDownList("equipamento", "Equipamento")
-
-                    @Html.DropDownList("user", "Usuário")
- 
-
-                    <select style="margin-bottom: 1%;" name="estado" id="estado">
-                        <option value="">- status   -</option>
-                        <option value="CONCLUIDO">CONCLUIDO</option>
-                        <option value="EM_ATENDIMENTO">EM ATENDIMENTO</option>
-                    </select>
-                    <textarea style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="" placeholder="descricao"></textarea>
-                    <button class="button" style="box-shadow:none">Cadastrar</button><br />
+                    <button class="button" style="box-shadow:none">Pesquisar</button><br />
                     <a class="button" href="@Url.Action("Index","Panel")" style="box-shadow:none">Voltar</a>
                 </form>
             </div>
@@ -80,11 +69,11 @@
     
  
 
-      $('#area').change(function () {
-        var es = document.getElementById('area');
-        esValor = es.options[es.selectedIndex].value;
+     // $('#area').change(function () {
+    //    var es = document.getElementById('area');
+     //   esValor = es.options[es.selectedIndex].value;
    
-     window.location = "/Solicitacao/verificarArea?id=" + esValor
+   //  window.location = "/Solicitacao/verificarArea?id=" + esValor
      });
  </script>
 

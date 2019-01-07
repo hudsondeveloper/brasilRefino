@@ -53,11 +53,11 @@
                 <form method="post" action="@Url.Action("Cadastrar","Solicitacao")" style="width:500px;margin-bottom:1%">
 
                     @Html.DropDownList("area", "Área")
-      
+
                     @Html.DropDownList("equipamento", "Equipamento")
 
                     @Html.DropDownList("user", "Usuário")
- 
+
 
                     <select style="margin-bottom: 1%;" name="estado" id="estado">
                         <option value="">- status   -</option>
@@ -74,19 +74,19 @@
         </div>
     </section>
 
- <script>
+    <script>
     $("select").css("margin-bottom", "1%");
      $("select").attr("required");
-    
- 
+
+
 
       $('#area').change(function () {
         var es = document.getElementById('area');
         esValor = es.options[es.selectedIndex].value;
-   
+
      window.location = "/Solicitacao/verificarArea?id=" + esValor
      });
- </script>
+    </script>
 
 </body>
 </html>

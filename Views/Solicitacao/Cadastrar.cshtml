@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    var id = ViewBag.id;
 }
 
 <!DOCTYPE HTML>
@@ -12,6 +13,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/skel.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
 </head>
 <body>
 
@@ -29,7 +35,7 @@
                 <a href="#">novo</a>
                 <a href="#">novo</a>
                 <a href="@Url.Action("Logoff","Home")">Logoff</a>
-                <a href="@Url.Action("Comentario","Equipamento",new {id = @Session["idEquipamento"]})" class="  " style="color:#83d0a5">Voltar </a>
+                <a href="@Url.Action("Index","Panel")" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -39,19 +45,28 @@
     <section id="banner">
         <div class="inner">
             <header>
-                <h1>Cadastrar Comentario Equipamento</h1>
+                <h1>Solicitação</h1>
             </header>
 
             <div class="flex text-center ">
 
-                <form method="post" action="@Url.Action("CadastrarComentario","Equipamento",new { id = @Session["idEquipamento"]})" style="width:500px;margin-bottom:1%">
+                <form method="post" action="@Url.Action("Cadastrar","Solicitacao")" style="width:500px;margin-bottom:1%">
 
+                    @Html.DropDownList("area", "Área")
+      
+                    @Html.DropDownList("equipamento", "Equipamento")
 
+                    @Html.DropDownList("user", "Usuário")
+ 
+
+                    <select style="margin-bottom: 1%;" name="estado" id="estado">
+                        <option value="">- status   -</option>
+                        <option value="CONCLUIDO">CONCLUIDO</option>
+                        <option value="EM_ATENDIMENTO">EM ATENDIMENTO</option>
+                    </select>
                     <textarea style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="" placeholder="descricao"></textarea>
-
-
                     <button class="button" style="box-shadow:none">Cadastrar</button><br />
-                    <a class="button" href="@Url.Action("Comentario","Equipamento",new { id = @Session["idEquipamento"]})" style="box-shadow:none">Voltar</a>
+                    <a class="button" href="@Url.Action("Index","Panel")" style="box-shadow:none">Voltar</a>
                 </form>
             </div>
 
@@ -59,11 +74,19 @@
         </div>
     </section>
 
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-    <script src="~/Content/assets/js/skel.min.js"></script>
-    <script src="~/Content/assets/js/util.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
+ <script>
+    $("select").css("margin-bottom", "1%");
+     $("select").attr("required");
+    
+ 
+
+      $('#area').change(function () {
+        var es = document.getElementById('area');
+        esValor = es.options[es.selectedIndex].value;
+   
+     window.location = "/Solicitacao/verificarArea?id=" + esValor
+     });
+ </script>
 
 </body>
 </html>

@@ -1,8 +1,6 @@
-﻿@model IEnumerable<B_R.Models.Equipamento>
-
+﻿@model IEnumerable<B_R.Models.Solicitacao>
 @{
     Layout = null;
-    var idArea = Session["idArea"];
 }
 
 <!DOCTYPE HTML>
@@ -24,7 +22,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.css" />
-
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/skel.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
@@ -55,63 +57,90 @@
         <div class="inner">
 
             <header>
-                <h1>Equipamentos</h1>
+                <h1>Minhas Solicitações</h1>
             </header>
             <div class=" ">
                 <div>
-                    <a href="@Url.Action("Cadastrar","Equipamento",new { id = idArea})" class="button special logo">Novo Equipamento</a>
+                    <a href="@Url.Action("Cadastrar","Solicitacao")" class="button special logo">Nova Solicitação</a>
+                    <a href="@Url.Action("MinhasSolicitacoes","Panel")" class="button special logo">Minhas Solicitações</a>
                     <table id="example" class="hover" style="width:100%">
                         <thead>
                             <tr style="background-color:white">
-                               <th> REG</th>
-                                <th> TAG</th>
-                                <th>DRESCRI. EQUIP.</th>
-                                <th>SITUAÇÃO</th>
-                                <th>DOC. STATUS</th>
+                                <th>SOLICITANTE</th>
+                                <th>ÁREA</th>
+                                <th>EQUIP</th>
                                 <th>DESCRIÇÃO</th>
-                                <th>EDIT.</th>
+                                <th>SITUAÇÃO</th>
+                                <th>ABERTURA</th>
+                                <th>FECHAMENTO</th>
+                                <th>RESP.</th>
                                 <th>HIST.</th>
-                                <th>COMENT.</th>
-                                <th>ANEXOS</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                             <td>
-       @Html.DisplayFor(modelItem => item.reg)
-    </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.tag)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.descricao_equipamento)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.situacao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.status_Doc)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.descricao)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Editar","Equipamento" ,new { id = item.Id })" style="box-shadow:none"><i class="fas fa-edit"></i></a>
-                                </td>
-                                <td>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.solicitante.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.equipamento.area.nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.equipamento.descricao_equipamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.descricao)
+                                    </td>
+                                    @if (item.estado == B_R.Models.estado.CONCLUIDO)
+                                    {
 
-                                    <a href="@Url.Action("Detalhe","Equipamento",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-archive"></i></a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Comentario","Equipamento",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-file-alt"></i></a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = idArea })" style="box-shadow:none"><i class="fas fa-download"></i></a>
-                                </td>
-                            </tr>
+                                        <td style="background-color:#7ec89e">
+                                            @Html.DisplayFor(modelItem => item.estado)
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td style="background-color:#ce8c45">
+                                            @Html.DisplayFor(modelItem => item.estado)
+                                        </td>
+                                    }
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.abertura)
+                                    </td>
+                                    <td>
+                                        @if (item.fechamento.ToString() == "01/01/0001 00:00:00")
+                                        {
+                                        }
+                                        else
+                                        {
+                                            @Html.DisplayFor(modelItem => item.fechamento)
+                                        }
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("RespSolicitacao","Solicitacao",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-reply"></i></a>
+                                    </td>
+                                    <td>
+
+                                        <a href="@Url.Action("Detalhe","Solicitacao",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-archive"></i></a>
+                                    </td>
+                                    @*
+                                        <td>
+
+                                            <a href="@Url.Action("Detalhe","Equipamento")" style="box-shadow:none"><i class="fas fa-archive"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Comentario","Equipamento")" style="box-shadow:none"><i class="fas fa-file-alt"></i></a>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("UploadFile","Equipamento")" style="box-shadow:none"><i class="fas fa-download"></i></a>
+                                        </td>*@
+                                </tr>
+
                             }
+
                         </tbody>
                         <tfoot>
 
@@ -121,7 +150,6 @@
             </div>
         </div>
     </section>
-
     <script>
         $(document).ready(function() {
             $('#example').DataTable({
@@ -174,7 +202,6 @@
             background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6cc091), color-stop(100%, #6cc091));
             background: -webkit-linear-gradient(top, #6cc091 0%, #6cc091 100%);
             background: -moz-linear-gradient(top, #585858 0%, #111 100%);
-            /*background: -ms-linear-gradient(top, #585858 0%, #111 100%);*/
             background: -o-linear-gradient(top, #585858 0%, #111 100%);
             background: linear-gradient(to bottom, #6cc091 0%, #6cc091 100%);
         }
@@ -186,10 +213,19 @@
         table.dataTable, table.dataTable th, table.dataTable td {
             margin-bottom: 2%;
         }
+
         body, input, select, textarea {
             color: #0c0c0c;
         }
     </style>
-
+    <style>
+        #banner .inner {
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 10005;
+            padding-top: 2em;
+            height: 1080px;
+        }
+    </style>
 </body>
 </html>

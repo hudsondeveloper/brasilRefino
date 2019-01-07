@@ -1,4 +1,6 @@
-﻿@{
+﻿@model B_R.Models.Solicitacao
+
+@{
     Layout = null;
 }
 
@@ -12,10 +14,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
+    <!-- Scripts -->
+    <script src="~/Content/assets/js/jquery.min.js"></script>
+    <script src="~/Content/assets/js/skel.min.js"></script>
+    <script src="~/Content/assets/js/util.js"></script>
+    <script src="~/Content/assets/js/main.js"></script>
 </head>
 <body>
 
-    <!-- Header -->
     <header id="header">
         <div class="inner">
             @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
@@ -29,7 +35,7 @@
                 <a href="#">novo</a>
                 <a href="#">novo</a>
                 <a href="@Url.Action("Logoff","Home")">Logoff</a>
-                <a href="@Url.Action("Comentario","Equipamento",new {id = @Session["idEquipamento"]})" class="  " style="color:#83d0a5">Voltar </a>
+                <a href="@Url.Action("Index","Panel")" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -39,31 +45,44 @@
     <section id="banner">
         <div class="inner">
             <header>
-                <h1>Cadastrar Comentario Equipamento</h1>
+                <h1>Resposta Solicitação</h1>
             </header>
 
             <div class="flex text-center ">
 
-                <form method="post" action="@Url.Action("CadastrarComentario","Equipamento",new { id = @Session["idEquipamento"]})" style="width:500px;margin-bottom:1%">
+                <form method="post" action="@Url.Action("RespSolicitacao","Solicitacao",new { idSolicitacao = Model.Id})" style="width:500px;margin-bottom:1%">
 
+                    @Html.DropDownList("user", "Usuário")
 
                     <textarea style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="" placeholder="descricao"></textarea>
 
+                    <select style="margin-bottom: 1%;" name="estado" id="estado">
+                        <option value="">- status do documento -</option>
+                        @if (Model.estado == B_R.Models.estado.CONCLUIDO)
+                        {
+                            <option selected value="CONCLUIDO">CONCLUIDO</option>
+                            <option value="EM_ATENDIMENTO">EM ATENDIMENTO</option>
+                        }
+                        else
+                        {
+                            <option value="CONCLUIDO">CONCLUIDO</option>
+                            <option selected value="EM_ATENDIMENTO">EM ATENDIMENTO</option>
+                        }
+                    </select>
 
-                    <button class="button" style="box-shadow:none">Cadastrar</button><br />
-                    <a class="button" href="@Url.Action("Comentario","Equipamento",new { id = @Session["idEquipamento"]})" style="box-shadow:none">Voltar</a>
+                    <button class="button" style="box-shadow:none">Responder</button><br />
+                    <a class="button" href="@Url.Action("Index","Panel")" style="box-shadow:none">Voltar</a>
                 </form>
             </div>
 
             <footer></footer>
         </div>
     </section>
+    <script>
+          $("select").css("margin-bottom", "1%");
+    </script>
 
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-    <script src="~/Content/assets/js/skel.min.js"></script>
-    <script src="~/Content/assets/js/util.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
+
 
 </body>
 </html>

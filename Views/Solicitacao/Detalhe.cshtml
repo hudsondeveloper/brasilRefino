@@ -1,17 +1,13 @@
-﻿@model IEnumerable<B_R.Models.Equipamento>
+﻿@model List<B_R.Models.RespSolicitacao>
 
 @{
     Layout = null;
-    var idArea = Session["idArea"];
 }
 
 <!DOCTYPE HTML>
 
 <html>
 <head>
-
-    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
-    @*<title>Brasil Refino</title>*@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="~/Content/assets/css/main.css" />
@@ -28,8 +24,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/jszip-2.5.0/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-flash-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
+    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
+    @*<title>Brasil Refino</title>*@
+
 </head>
 <body>
+
 
     <!-- Header -->
     <header id="header">
@@ -45,6 +45,7 @@
                 <a href="#">novo</a>
                 <a href="#">novo</a>
                 <a href="@Url.Action("Logoff","Home")">Logoff</a>
+                <a href="@Url.Action("Index","Panel")" class="  " style="color:#83d0a5">Voltar </a>
             </nav>
             <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
         </div>
@@ -55,62 +56,37 @@
         <div class="inner">
 
             <header>
-                <h1>Equipamentos</h1>
+                <h1>Historico Solicitações</h1>
             </header>
             <div class=" ">
                 <div>
-                    <a href="@Url.Action("Cadastrar","Equipamento",new { id = idArea})" class="button special logo">Novo Equipamento</a>
-                    <table id="example" class="hover" style="width:100%">
+                    <table id="example" class="" style="width:100%">
                         <thead>
                             <tr style="background-color:white">
-                               <th> REG</th>
-                                <th> TAG</th>
-                                <th>DRESCRI. EQUIP.</th>
-                                <th>SITUAÇÃO</th>
-                                <th>DOC. STATUS</th>
-                                <th>DESCRIÇÃO</th>
-                                <th>EDIT.</th>
-                                <th>HIST.</th>
-                                <th>COMENT.</th>
-                                <th>ANEXOS</th>
+                                <th>SOLICITANTE</th>
+                                <th> DESCRIÇÃO</th>
+                                <th> ESTADO</th>
+                                <th>HOARÁRIO</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                             <td>
-       @Html.DisplayFor(modelItem => item.reg)
-    </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.tag)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.descricao_equipamento)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.situacao)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.status_Doc)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.descricao)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Editar","Equipamento" ,new { id = item.Id })" style="box-shadow:none"><i class="fas fa-edit"></i></a>
-                                </td>
-                                <td>
-
-                                    <a href="@Url.Action("Detalhe","Equipamento",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-archive"></i></a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("Comentario","Equipamento",new { id = item.Id })" style="box-shadow:none"><i class="fas fa-file-alt"></i></a>
-                                </td>
-                                <td>
-                                    <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = idArea })" style="box-shadow:none"><i class="fas fa-download"></i></a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.solicitante.Nome)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.descricao)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.estado)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.horario)
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                         <tfoot>
@@ -138,7 +114,8 @@
         "sUrl":           "",
         "sInfoThousands":  ",",
         "sLoadingRecords": "Cargando...",
-        }
+        },
+         //"searching": false,
         });
         } );
     </script>
@@ -174,7 +151,6 @@
             background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6cc091), color-stop(100%, #6cc091));
             background: -webkit-linear-gradient(top, #6cc091 0%, #6cc091 100%);
             background: -moz-linear-gradient(top, #585858 0%, #111 100%);
-            /*background: -ms-linear-gradient(top, #585858 0%, #111 100%);*/
             background: -o-linear-gradient(top, #585858 0%, #111 100%);
             background: linear-gradient(to bottom, #6cc091 0%, #6cc091 100%);
         }
@@ -186,10 +162,14 @@
         table.dataTable, table.dataTable th, table.dataTable td {
             margin-bottom: 2%;
         }
+
         body, input, select, textarea {
             color: #0c0c0c;
         }
     </style>
+
+
+
 
 </body>
 </html>

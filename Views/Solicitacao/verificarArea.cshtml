@@ -52,17 +52,34 @@
 
                 <form method="post" action="@Url.Action("Cadastrar","Solicitacao")" style="width:500px;margin-bottom:1%">
 
-                     @Html.DropDownList("area", "Área")
+                    @Html.DropDownList("area", "Área")
 
                     @Html.DropDownList("equipamento", "Equipamento")
 
-                    @Html.DropDownList("user", "Usuário")
+                    <select style="margin-bottom: 1%;" name="setor" id="setor" required>
+                        <option value="">- setor -</option>
+                        <option value="MANUTENCAO_MECANICA">MANUTENCAO MECANICA</option>
+                        <option value="MANUTENCAO_ELETRICA">MANUTENCAO ELETRICA</option>
+                        <option value="MANUTENCAO_AUTOMACAO">MANUTENCAO AUTOMACAO</option>
+                        <option value="CIVIL">CIVIL</option>
+                        <option value="SEGURANÇA_INDUSTRIAIS">SEGURANÇA INDUSTRIAIS</option>
+                        <option value="COMPRAS">COMPRAS</option>
+                        <option value="PROJETOS">PROJETOS</option>
+                        <option value="CIPA">CIPA</option>
+                    </select>
 
 
                     <select style="margin-bottom: 1%;" name="estado" id="estado">
                         <option value="">- status   -</option>
                         <!--<option value="CONCLUIDO">CONCLUIDO</option>-->
                         <option value="EM_ATENDIMENTO">EM ATENDIMENTO</option>
+                        <option value="PROGRAMACAO">PROGRAMACÃO</option>
+                        <option value="MODERADA">MODERADA</option>
+                        <option value="URGENTE">URGENTE</option>
+                        <option value="EMERGENCIA">EMERGÊNCIA</option>
+                        <option value="CORRETIVA">CORRETIVA</option>
+                        <option value="PREVENTIVA">PREVENTIVA</option>
+                        <option value="PREDITIVA">PREDITIVA</option>
                     </select>
                     <textarea style="margin-bottom: 1%;" type="text" name="descricao" id="descricao" value="" placeholder="descricao"></textarea>
                     <button class="button" style="box-shadow:none">Cadastrar</button><br />

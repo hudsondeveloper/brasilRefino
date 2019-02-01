@@ -1,118 +1,122 @@
 ﻿@model B_R.Models.Equipamento
 
+
 @{
-    Layout = null;
-var idArea = Session["areaid"];
-}    
-
-<!DOCTYPE HTML>
-
-<html>
-<head>
-
-    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
-    @*<title>Brasil Refino</title>*@
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
-</head>
-<body>
-
-    <header id="header">
-        <div class="inner">
-            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
-            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
-            <p class="logo" style="margin-top:3%">Bem vindo, @Session["user"]</p>
-            <nav id="nav">
-                <a href="@Url.Action("Index","Area")">Área</a>
-                <a href="@Url.Action("Index","Panel")">solicitação</a>
-                <a href="#">relatorio</a>
-                <a href="#">plano de inspeção</a>
-                <a href="#">novo</a>
-                <a href="#">novo</a>
-                <a href="@Url.Action("Logoff","Home")">Logoff</a>
-                <a href="@Url.Action("Index","Equipamento",new { id = idArea})" class="  " style="color:#83d0a5">Voltar </a>
-            </nav>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
-    </header>
-
-    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <header>
-                <h1>Editar Equipamento</h1>
-            </header>
-
-            <div class="flex text-center ">
-
-                <form method="post" action="@Url.Action("Editar","Equipamento",new {idArea = idArea })" style="width:500px;margin-bottom:1%">
+    var idArea = Session["areaid"];
+    ViewBag.titulo = "Editar Equipamento";
+}
 
 
-                    @*<input style="margin-bottom: 1%;" type="text" name="reg" id="reg" value="@Model.reg" placeholder="reg">*@
-                    <input style="margin-bottom: 1%;margin-bottom: 1%;background: #555;border: solid 2px #555;" type="text" name="tag" id="tag" value="@Model.tag" placeholder="tag" readonly />
-                    <select style="margin-bottom: 1%;" name="situacao" id="situacao">
-                        <option value="">- situação -</option>
-                        @if (Model.situacao == B_R.Models.situacao.ATIVO)
-                        {
-                            <option selected value="ATIVO">ATIVO</option>
-                            <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
-                            <option value="EM_MONTAGEM">EM MONTAGEM</option>
-                            <option value="DESATIVADA">DESATIVADA</option>
-                        }
-                        else if (Model.situacao == B_R.Models.situacao.FORA_DE_OPERACAO)
-                        {
-                            <option value="ATIVO">ATIVO</option>
-                            <option selected value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
-                            <option value="EM_MONTAGEM">EM MONTAGEM</option>
-                            <option value="DESATIVADA">DESATIVADA</option>
-                        }
-                        else if (Model.situacao == B_R.Models.situacao.EM_MONTAGEM)
-                        {
-                            <option value="ATIVO">ATIVO</option>
-                            <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
-                            <option selected value="EM_MONTAGEM">EM MONTAGEM</option>
-                            <option value="DESATIVADA">DESATIVADA</option>
-                        }
-                        else if (Model.situacao == B_R.Models.situacao.DESATIVADA)
-                        {
-                            <option value="ATIVO">ATIVO</option>
-                            <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
-                            <option value="EM_MONTAGEM">EM MONTAGEM</option>
-                            <option selected value="DESATIVADA">DESATIVADA</option>
-                        }
 
-                    </select>
-                    <select style="margin-bottom: 1%;" name="status_Doc" id="status_Doc">
-                        <option value="">- status do documento -</option>
-                        @if (Model.status_Doc == B_R.Models.status_Doc.ATUALIZADO)
-                        {
-                            <option selected value="ATUALIZADO">ATUALIZADO</option>
-                            <option value="PENDENTE">PENDENTE</option>
-                        }
-                        else
-                        {
-                            <option selected value="PENDENTE">PENDENTE</option>
-                            <option value="ATUALIZADO">ATUALIZADO</option>
-                        }
-                    </select>
-                    <input style="margin-bottom: 1%;margin-bottom: 1%;background: #555;border: solid 2px #555;" type="text" name="descricao" id="descricao" value="@Model.descricao" placeholder="descricao" readonly />
-                    <input style="margin-bottom: 1%;margin-bottom: 1%;background: #555;border: solid 2px #555;" type="text" name="descricao_equipamento" id="descricao_equipamento" value="@Model.descricao_equipamento"  placeholder="descricao equipamento" readonly />
-                    <button class="button" style="box-shadow:none">Editar</button><br />
-                    <a class="button" href="@Url.Action("Index","Equipamento",new { id = idArea})" style="box-shadow:none">Voltar</a>
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>  <small>  </small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Settings 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Editar","Equipamento",new {idArea = idArea })" method="post">
+                    @*<input style="margin-bottom: 1%;" type="hidden" name="reg" id="reg" value="@Model.reg" placeholder="reg">*@
+                    <input style="margin-bottom: 1%;margin-bottom: 1%;background: #555;border: solid 2px #555;" type="hidden" name="tag" id="tag" value="@Model.tag" placeholder="tag" readonly />
+                    <input style="margin-bottom: 1%;margin-bottom: 1%;background: #555;border: solid 2px #555;" type="hidden" name="descricao" id="descricao" value="@Model.descricao" placeholder="descricao" readonly />
+                    <input style="margin-bottom: 1%;margin-bottom: 1%;background: #555;border: solid 2px #555;" type="hidden" name="descricao_equipamento" id="descricao_equipamento" value="@Model.descricao_equipamento" placeholder="descricao equipamento" readonly />
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="situacao">
+                            Situacao <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <select class="form-control" name="situacao" id="situacao" required>
+                                @if (Model.situacao == B_R.Models.situacao.ATIVO)
+                                {
+                                    <option selected value="ATIVO">ATIVO</option>
+                                    <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
+                                    <option value="EM_MONTAGEM">EM MONTAGEM</option>
+                                    <option value="DESATIVADA">DESATIVADA</option>
+                                }
+                                else if (Model.situacao == B_R.Models.situacao.FORA_DE_OPERACAO)
+                                {
+                                    <option value="ATIVO">ATIVO</option>
+                                    <option selected value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
+                                    <option value="EM_MONTAGEM">EM MONTAGEM</option>
+                                    <option value="DESATIVADA">DESATIVADA</option>
+                                }
+                                else if (Model.situacao == B_R.Models.situacao.EM_MONTAGEM)
+                                {
+                                    <option value="ATIVO">ATIVO</option>
+                                    <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
+                                    <option selected value="EM_MONTAGEM">EM MONTAGEM</option>
+                                    <option value="DESATIVADA">DESATIVADA</option>
+                                }
+                                else if (Model.situacao == B_R.Models.situacao.DESATIVADA)
+                                {
+                                    <option value="ATIVO">ATIVO</option>
+                                    <option value="FORA_DE_OPERACAO">FORA DE OPERACÃO</option>
+                                    <option value="EM_MONTAGEM">EM MONTAGEM</option>
+                                    <option selected value="DESATIVADA">DESATIVADA</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status_Doc">
+                            Status do Doc <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <select class="form-control" name="status_Doc" id="status_Doc" required>
+                                @if (Model.status_Doc == B_R.Models.status_Doc.ATUALIZADO)
+                                {
+                                    <option selected value="ATUALIZADO">ATUALIZADO</option>
+                                    <option value="PENDENTE">PENDENTE</option>
+                                }
+                                else
+                                {
+                                    <option selected value="PENDENTE">PENDENTE</option>
+                                    <option value="ATUALIZADO">ATUALIZADO</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
-
-            <footer></footer>
         </div>
-    </section>
+    </div>
 
 
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-    <script src="~/Content/assets/js/skel.min.js"></script>
-    <script src="~/Content/assets/js/util.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
+ 
 
-</body>
-</html>
+          
+
+
+                       

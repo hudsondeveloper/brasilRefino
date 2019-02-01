@@ -1,129 +1,112 @@
 ﻿
-
 @{
-    Layout = null;
+    ViewBag.titulo = "Anexo";
     var idArea = Session["areaid"];
 }
-
-<!DOCTYPE HTML>
-
-<html>
-<head>
-
-    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
-    @*<title>Brasil Refino</title>*@
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-    <script src="~/Content/assets/js/skel.min.js"></script>
-    <script src="~/Content/assets/js/util.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-</head>
-<body>
-
-    <!-- Header -->
-    <header id="header">
-        <div class="inner">
-            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
-            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
-            <p class="logo" style="margin-top:3%">Bem vindo, @Session["user"]</p>
-            <nav id="nav">
-                <a href="@Url.Action("Index","Area")">Área</a>
-                <a href="@Url.Action("Index","Panel")">solicitação</a>
-                <a href="#">relatorio</a>
-                <a href="#">plano de inspeção</a>
-                <a href="#">novo</a>
-                <a href="#">novo</a>
-                <a href="@Url.Action("Logoff","Home")">Logoff</a>
-                <a href="@Url.Action("Index","Equipamento",new{id = @Session["areaid"] })" class="  " style="color:#83d0a5">Voltar </a>
-            </nav>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
-    </header>
-
-    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <header>
-                <h1>Anexos Área</h1>
-            </header>
-
-            <div class=" text-center ">
-
-
-
-                @using (Html.BeginForm("UploadFile", "Equipamento", new { id = @Session["idequip"], idarea = @Session["areaid"] }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#datatableHUD").DataTable({
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "resultado não encontrado",
+                "sEmptyTable": "Nenhum dado disponivel nesta tabla",
+                "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros de 0 a 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+            }, "order": [[0, "desc"]],
+            dom: "Blfrtip",
+            buttons: [
                 {
-
-                    <div>
-                        @Html.TextBox("file", "", new { type = "file" ,style= "color: #6aba8e;" }) <br />
-                        <br />
-
-
-                        <input type="submit" value="Upload" />
-
-                        @ViewBag.Message
-
-                    </div>
-
-                }
-
-
-                @model List<string>
-
-                <table class="alt" style="color:black">
-                    <tr>
-                        <th>NOME ARQUIVO</th>
-                        <th>DOWNLOAD</th>
-                    </tr>
-                    @if (Model != null)
-                    {
-
+                    extend: "copy",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "csv",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "excel",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "pdfHtml5",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "print",
+                    className: "btn-sm"
+                },
+            ],
+            responsive: true
+        });
+    });
 
 
-                        foreach (var item in Model)
-                        {
-                    <tr>
-                        <td>@item </td>
+</script>
 
-                       @*@Html.ActionLink("Download", "Download", new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] })*@
-                        <td>
-                            <a href="@Url.Action("Download","Equipamento" , new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] })" style="box-shadow:none"><i class="fas fa-download"></i></a>
-                        </td>
-                    </tr>
-                        }
+<form action="@Url.Action("UploadFile", "Equipamento", new { id = @Session["idequip"], idarea = @Session["areaid"] })" enctype="multipart/form-data" method="post" style="display:grid;margin-bottom:2%;">
+    <div class="form-group">
 
-                    }
-                </table>
+        <div>
+            @Html.TextBox("file", "", new { type = "file", style = "color: #6aba8e;" }) <br />
+       
 
-            </div>
+            <input type="submit" value="Upload" />
 
-            <footer></footer>
+            @ViewBag.Message
+
         </div>
-    </section>
+        @*<input type="submit" value="Pesquisar" class="col-md-3 col-sm-3 col-xs-3 " />*@
+    </div>
+</form>
+
+
+<div>
+
+    @model List<string>
+
+    <table id="datatableHUD" class="hover" style="width:100%">
+        <thead>
+            <tr style="background-color:white">
+                <th>Nome</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item </td>
+
+                @*@Html.ActionLink("Download", "Download", new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] })*@
+                <td>
+                    <a href="@Url.Action("Download","Equipamento" , new { ImageName = item, id = @Session["idequip"], idarea = @Session["areaid"] })" style="box-shadow:none"><i class="fa fa-download" title="download"></i></a>
+                </td>
+            </tr>
+
+            }
+
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+
+<script>
+
+</script>
 
 
 
-    <style>
-        table.alt {
-            border-collapse: separate;
-            background-color: white;
-        }
 
-        table th {
-            color: #555;
-            font-size: 0.9em;
-            font-weight: 600;
-            padding: 0 0.75em 0.75em 0.75em;
-            text-align: left;
-            text-align: center;
-            font-size: 22px;
-        }
-    </style>
 
-</body>
-</html>
+
+

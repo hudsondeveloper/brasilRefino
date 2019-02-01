@@ -1,156 +1,108 @@
-﻿@{ 
-    Layout = null;
+﻿@{
+                /**/
+
+                Layout = null;
 }
 
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
-    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
-    @*<title>Brasil Refino</title>*@
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/login/css/main.css">
+    <!--===============================================================================================-->
 </head>
-<body >
-    <!-- Header -->
-    <header id="header">
-        <div class="inner">
-            @*<img src="~/Content/images/Logo-Default.png" class="logo" />
-        menos esse  *@
-                <a href="@Url.Action("Index","Home")" class="logo"><strong></strong> BRASIL REFINO  </a>
-                <nav id="nav">
-                    <form method="post" action="@Url.Action("Login","Home")">
+<body style="background-color: #666666;">
 
-                        <div class="6u 12u$(xsmall)" style="display:inline-flex;height: 35px; width: 411px">
-                            <input style="margin: 10px;height:35px;" type="text" name="login" id="login" value="" placeholder="Name">
-                            <input style="margin: 10px;height:35px;" type="password" name="password" id="password" value="" placeholder="Senha">
-                        </div>
-                        <button class="button" style="box-shadow:none">Entrar</button>
-                        <a href="@Url.Action("Cadastrar","Home")" style="box-shadow:none">Cadastro</a>
-                    </form>
-                </nav>
-                <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-            </div>
-
-    </header>
-
-    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <header>
-                <h1>Gestão de Materiais</h1>
-            </header>
-
-            <div class="flex ">
-
-                <div>
-                    <span ><i class="fas fa-paper-plane" style="font-size: 56px;color: #6cc091;"></i></span>
-                    <h3>Solicitações</h3>
-                    @*<p>Suspendisse amet ullamco</p>*@
-                </div>
-
-                <div>
-                    <span><i class="fas fa-align-justify" style="font-size: 56px;color: #6cc091;"></i></span>
-                    <h3>Relatorios</h3>
-                    @*<p>Class aptent taciti ad litora</p>*@
-                </div>
-
-                <div>
-                    <span><i class="fas fa-tachometer-alt"  style="font-size: 56px;color: #6cc091;"></i></span>
-                    <h3>Controle</h3>
-                    @*<p>Nulla vitae mauris non felis</p>*@
-                </div>
-
-            </div>
-
-            <footer>
-                @*<a href="#" class="button">Get Started</a>*@
-            </footer>
-
-        </div>
-    </section>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post" action="@Url.Action("Login","Home")"> 
+                    <span class="login100-form-title p-b-43">
+                        Login
+                    </span>
 
 
-    <!-- Three -->
-    @*<section id="three" class="wrapper align-center">
-        <div class="inner">
-            <div class="flex flex-2">
-                <article>
-                    <div class="image round">
-                        <img src="images/pic01.jpg" alt="Pic 01" />
+                    <div class="wrap-input100 validate-input" data-validate="Valid login is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="login">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">login</span>
                     </div>
-                    <header>
-                        <h3>Lorem ipsum<br /> dolor amet nullam</h3>
-                    </header>
-                    <p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
-                    <footer>
-                        <a href="#" class="button">Learn More</a>
-                    </footer>
-                </article>
-                <article>
-                    <div class="image round">
-                        <img src="images/pic02.jpg" alt="Pic 02" />
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" type="password" name="password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
                     </div>
-                    <header>
-                        <h3>Sed feugiat<br /> tempus adipicsing</h3>
-                    </header>
-                    <p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
-                    <footer>
-                        <a href="#" class="button">Learn More</a>
-                    </footer>
-                </article>
+
+         
+
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Entrar
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-46 p-b-20">
+                        <a href="@Url.Action("Cadastrar","Home")" class="txt1">
+                            cadastro
+                        </a>
+                    </div>
+
+                  
+                </form>
+
+                <div class="login100-more" style="background-image: url('/Content/images/banner.jpg');">
+                </div>
             </div>
         </div>
-    </section>*@
+    </div>
 
-    <!-- Footer -->
-    @*<footer id="footer">
-        <div class="inner">
 
-            <h3>Get in touch</h3>
 
-            <form action="#" method="post">
 
-                <div class="field half first">
-                    <label for="name">Name</label>
-                    <input name="name" id="name" type="text" placeholder="Name">
-                </div>
-                <div class="field half">
-                    <label for="email">Email</label>
-                    <input name="email" id="email" type="email" placeholder="Email">
-                </div>
-                <div class="field">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-                </div>
-                <ul class="actions">
-                    <li><input value="Send Message" class="button alt" type="submit"></li>
-                </ul>
-            </form>
 
-            <div class="copyright">
-                &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
-            </div>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/js/main.js"></script>
 
-        </div>
-    </footer>*@
-
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-    <script src="~/Content/assets/js/skel.min.js"></script>
-    <script src="~/Content/assets/js/util.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-    <style>
-        #banner .inner {
-            border-top: 2px solid rgba(255, 255, 255, 0.2);
-            position: relative;
-            z-index: 10005;
-            padding-top: 2em;
-            height: 1080px;
-        }
-    </style>
 </body>
 </html>
+
+

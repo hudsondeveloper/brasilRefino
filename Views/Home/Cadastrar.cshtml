@@ -2,142 +2,186 @@
     Layout = null;
 }
 
-<!DOCTYPE HTML>
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 
-    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
-    @*<title>Brasil Refino</title>*@
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
-    <script>
-                function validarSenha(){
-                  var  NovaSenha = document.getElementById('senha');
-                  var  CNovaSenha =document.getElementById('confirmar');
-
-                    if (NovaSenha.value != CNovaSenha.value)
-                        alert("SENHAS DIFERENTES! FAVOR DIGITAR SENHAS IGUAIS");
-        }
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/login/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/login/css/main.css">
+    <!--===============================================================================================-->
 </head>
-<body>
+<body style="background-color: #666666;">
 
-    <!-- Header -->
-    <header id="header">
-        <div class="inner">
-            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
-            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
-    </header>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form" method="post" action="@Url.Action("Cadastrar","Home")">
+                    <span class="login100-form-title p-b-43">
+                        Cadastro
+                    </span>
 
-    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <header>
-                <h1>Cadastrar Usuário</h1>
-            </header>
 
-            <div class="flex text-center ">
+                    <div class="wrap-input100 validate-input" data-validate="Valid login is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="login" required>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">login</span>
+                    </div>
 
-                <form method="post" action="@Url.Action("Cadastrar","Home")" style="width:500px;margin-bottom:1%">
 
-                    <input style="margin-bottom: 1%;" type="text" name="login" id="login" value="" placeholder="Login" required style="text-transform:lowercase">
-                    <input style="margin-bottom: 1%;" type="text" name="Nome" id="Nome" value="" placeholder="Nome" required style="text-transform:lowercase">
-                    <input style="margin-bottom: 1%;" type="email" name="Email" id="Email" value="" placeholder="Email" required>
-                    <input style="margin-bottom: 1%;" type="text" name="Cargo" id="Cargo" value="" placeholder="Cargo">
-                    <select style="margin-bottom: 1%;" name="Sexo" id="Sexo" required>
-                        <option value="">- Sexo -</option>
-                        <option value="M">Msculino</option>
-                        <option value="F">Feminino</option>
-                    </select>
-                    <input style="margin-bottom: 1%;" type="text" name="matricula" id="matricula" value="" placeholder="Matricula" required>
-                    <input style="margin-bottom: 1%;" type="password" name="senha" id="senha" value="" placeholder="senha - os seis primeiros digitos do cpf" required>
-                    <input style="margin-bottom: 1%;" type="password" name="confirmar" id="confirmar" value="" placeholder="confirmar senha - os seis primeiros digitos do cpf" required>
 
-                    <button class="button" style="box-shadow:none" onClick="validarSenha()">Cadastrar</button>
+                    <div class="wrap-input100 validate-input" data-validate="Valid Nome is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="Nome" required>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Nome</span>
+                    </div>
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid Email is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="Email" required>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid Sexo is required: ex@abc.xyz">
+                        <select class="input100" name="Sexo" required>
+                            <option value="">- Sexo -</option>
+                            <option value="M">Msculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Sexo</span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid setor is required: ex@abc.xyz">
+                        <select class="input100" name="setor" required>
+                            <option value="" selected>SELECIONE</option>
+                            <option value="MECANICA">MECANICA</option>
+                            <option value="AUTOMACAO">AUTOMACAO</option>
+                            <option value="ELETRICA">ELETRICA</option>
+                            <option value="CIVIL">CIVIL</option>
+                            <option value="SEGURANÇA">SEGURANÇA</option>
+                            <option value="COMPRAS">COMPRAS</option>
+                            <option value="PROJETOS">PROJETOS</option>
+                            <option value="CIPA">CIPA</option>
+                            <option value="TI">TI</option>
+                            <option value="JARDINAGEM">JARDINAGEM</option>
+                            <option value="PINTURA">PINTURA</option>
+                            <option value="RH">RH</option>
+                            <option value="CONTABILIDADE">CONTABILIDADE</option>
+                            <option value="LIMPEZA">LIMPEZA</option>
+                            <option value="BALANÇA">BALANÇA</option>
+                            <option value="ESCRITÓRIO">ESCRITÓRIO</option>
+                            <option value="FATURAMENTO">FATURAMENTO</option>
+                        </select>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">setor</span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid matricula is required: ex@abc.xyz">
+                        <input class="input100" type="text" name="matricula" required>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">matricula</span>
+                    </div>
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid senha is required: ex@abc.xyz">
+                        <input class="input100" type="password" id="senha" name="senha" required>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">senha - os seis primeiros digitos do cpf</span>
+                    </div>
+
+
+
+                    <div class="wrap-input100 validate-input" data-validate="confirmar is required">
+                        <input class="input100" type="password" id="confirmar" name="confirmar" required>
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">confirmar senha - os seis primeiros digitos do cpf</span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" onClick="validarSenha()">
+                            Cadastrar
+                        </button>
+                    </div>
+
+                    <div class="text-center p-t-46 p-b-20">
+                        <input  type="submit" href="" class="txt1" value="Login">
+                            
+                        
+                    </div>
+
+
                 </form>
-            </div>
 
-            <footer>
-                @*<a href="#" class="button">Get Started</a>*@
-            </footer>
-        </div>
-    </section>
-
-
-    <!-- Three -->
-    @*<section id="three" class="wrapper align-center">
-            <div class="inner">
-                <div class="flex flex-2">
-                    <article>
-                        <div class="image round">
-                            <img src="images/pic01.jpg" alt="Pic 01" />
-                        </div>
-                        <header>
-                            <h3>Lorem ipsum<br /> dolor amet nullam</h3>
-                        </header>
-                        <p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
-                        <footer>
-                            <a href="#" class="button">Learn More</a>
-                        </footer>
-                    </article>
-                    <article>
-                        <div class="image round">
-                            <img src="images/pic02.jpg" alt="Pic 02" />
-                        </div>
-                        <header>
-                            <h3>Sed feugiat<br /> tempus adipicsing</h3>
-                        </header>
-                        <p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
-                        <footer>
-                            <a href="#" class="button">Learn More</a>
-                        </footer>
-                    </article>
+                <div class="login100-more" style="background-image: url('/Content/images/banner.jpg');">
                 </div>
             </div>
-        </section>*@
+        </div>
+    </div>
 
-    <!-- Footer -->
-    @*<footer id="footer">
-            <div class="inner">
 
-                <h3>Get in touch</h3>
 
-                <form action="#" method="post">
 
-                    <div class="field half first">
-                        <label for="name">Name</label>
-                        <input name="name" id="name" type="text" placeholder="Name">
-                    </div>
-                    <div class="field half">
-                        <label for="email">Email</label>
-                        <input name="email" id="email" type="email" placeholder="Email">
-                    </div>
-                    <div class="field">
-                        <label for="message">Message</label>
-                        <textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-                    </div>
-                    <ul class="actions">
-                        <li><input value="Send Message" class="button alt" type="submit"></li>
-                    </ul>
-                </form>
 
-                <div class="copyright">
-                    &copy; Untitled. Design: <a href="https://templated.co">TEMPLATED</a>. Images: <a href="https://unsplash.com">Unsplash</a>.
-                </div>
-
-            </div>
-        </footer>*@
-
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-    <script src="~/Content/assets/js/skel.min.js"></script>
-    <script src="~/Content/assets/js/util.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/daterangepicker/moment.min.js"></script>
+    <script src="~/login/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/login/js/main.js"></script>
 
 </body>
 </html>
+<style>
+    .login100-form {
+
+        padding: 51px 55px 55px 55px;
+    }
+</style>
+
+    <script>
+        function validarSenha() {
+            var NovaSenha = document.getElementById('senha');
+            var CNovaSenha = document.getElementById('confirmar');
+
+            if (NovaSenha.value != CNovaSenha.value)
+                alert("SENHAS DIFERENTES! FAVOR DIGITAR SENHAS IGUAIS");
+        }
+    </script>
+
+
+ 

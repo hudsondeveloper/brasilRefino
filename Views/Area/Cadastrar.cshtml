@@ -1,68 +1,65 @@
 ﻿@{
-    Layout = null;
+    ViewBag.titulo = "Cadastrar Área";
 }
-
-<!DOCTYPE HTML>
-
-<html>
-<head>
-
-    @*<img src="~/Content/images/Logo-Default.png" height="100px" style="position:absolute;z-index:1;margin-top: 1%; margin-left: 5%;"/>*@
-    @*<title>Brasil Refino</title>*@
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="~/Content/assets/css/main.css" />
-</head>
-<body>
-
-    <!-- Header -->
-    <header id="header">
-        <div class="inner">
-            @*<img src="~/Content/images/Logo-Default.png" class="logo" />*@
-            <a href="@Url.Action("Index","Panel")" class="logo"><strong></strong> BRASIL REFINO</a>
-            <p class="logo" style="margin-top:3%">Bem vindo, @Session["user"]</p>
-            <nav id="nav">
-                <a href="@Url.Action("Index","Area")">Área</a>
-                <a href="@Url.Action("Index","Panel")">solicitação</a>
-                <a href="#">relatorio</a>
-                <a href="#">plano de inspeção</a>
-                <a href="#">novo</a>
-                <a href="#">novo</a>
-                <a href="@Url.Action("Logoff","Home")">Logoff</a>
-            </nav>
-            <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-        </div>
-    </header>
-
-    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <header>
-                <h1>Cadastrar Área</h1>
-            </header>
-
-            <div class="flex text-center ">
-
-                <form method="post" action="@Url.Action("Cadastrar","Area")" style="width:500px;margin-bottom:1%">
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>  <small>  </small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Settings 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Cadastrar","Area")" method="post">
 
 
-                    <input style="margin-bottom: 1%;" type="text" name="codigo" id="codigo" value="" placeholder="codigo">
-                    <input style="margin-bottom: 1%;" type="text" name="nome" id="nome" value="" placeholder="nome">
 
-                    <button class="button" style="box-shadow:none">Cadastrar</button><br />
-                    <a class="button" href="@Url.Action("Index","Area")" style="box-shadow:none">Voltar</a>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="código">
+                            Código <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="codigo" name="codigo" required="required" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="first-name">
+                            Nome <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="nome" name="nome" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            <button type="submit" class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
-
-            <footer></footer>
         </div>
-    </section>
-
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/jquery.min.js"></script>
-    <script src="~/Content/assets/js/skel.min.js"></script>
-    <script src="~/Content/assets/js/util.js"></script>
-    <script src="~/Content/assets/js/main.js"></script>
-
-</body>
-</html>
+    </div>
+ </div>

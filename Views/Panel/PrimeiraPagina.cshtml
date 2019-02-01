@@ -1,0 +1,135 @@
+﻿@model IEnumerable<B_R.Models.Solicitacao>
+@{
+    ViewBag.titulo = "Solicitação de ordem de serviço";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#datatableHUD").DataTable({
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "resultado não encontrado",
+                "sEmptyTable": "Nenhum dado disponivel nesta tabla",
+                "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros de 0 a 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+            }, "order": [[0, "desc"]],
+            dom: "Blfrtip",
+            buttons: [
+                {
+                    extend: "copy",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "csv",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "excel",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "pdfHtml5",
+                    className: "btn-sm"
+                },
+                {
+                    extend: "print",
+                    className: "btn-sm"
+                },
+            ],
+            responsive: true
+        });
+    });
+
+
+</script>
+<form action="@Url.Action("Index","Panel")" method="post" style="display:grid;margin-bottom:2%;">
+    <div class="form-group">
+
+        <div class="col-md-3 col-sm-3 col-xs-3">
+            <select class="form-control" name="situacao" id="situacao">
+                <option value="" selected>SITUAÇÃO</option>
+                <option value="FINALIZADA">FINALIZADA</option>
+                <option value="PENDENTE">PENDENTE</option>
+                <option value="CANCELADA">CANCELADA</option>
+            </select>
+        </div>
+        <input type="submit" value="Pesquisar" class="col-md-3 col-sm-3 col-xs-3 " />
+    </div>
+</form>
+<div class=" ">
+    <div>
+        <table id="datatableHUD" class="hover" style="width:100%">
+            <thead>
+                <tr style="background-color:white">
+                    <th>Código</th>
+                    <th>Solicitante</th>
+                    <th>Área</th>
+                    <th>Tag</th>
+                    <th>Nome</th>
+                    <th>Prioridade</th>
+                    <th>Modalidade</th>
+                    <th>Setor</th>
+                    <th>Data</th>
+                    <th>Ação</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.solicitante.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipamento.area.codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipamento.tag)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.equipamento.descricao_equipamento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.prioridade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.modalidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.setor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.abertura)
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("Detalhe","Solicitacao",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" class="fa fa-search fa-2x"></i></a>
+                    </td>
+                </tr>
+
+                }
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script>
+
+</script>
+
+
+

@@ -57,7 +57,7 @@
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
-                <div class="left_col scroll-view" style="background-image: url('/Content/images/banner.jpg');min-height:1000PX">
+                <div class="left_col scroll-view" style="background-image: url('../Content/images/banner.jpg');min-height:1000PX">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="index.html" class="site_title"><i class="fa fa-dashboard"></i> <span>BRASIL REFINO</span></a>
                     </div>
@@ -340,7 +340,7 @@
 
         function atualizarChamados() {
 
-            var url = "/Solicitacao/contarChamados"
+            var url= "@Url.Action("contarChamados","Solicitacao")"
 
             $.get(url, null, function (data) {
                 $("#solicitacoes").html(data)

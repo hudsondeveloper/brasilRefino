@@ -156,7 +156,8 @@
                 if ($(this).val() != "") {
                     $("#loader").css({ display: "block" });
                     $("#loader").css({ width: "18%" });
-                    var url = "/Solicitacao/CadastrarSolicitacao" + "?id=" + $(this).val();
+                    var url = "@Url.Action("CadastrarSolicitacao", "Solicitacao")" + "?id=" + $(this).val();
+                    
 
                     $.get(url, null, function (data) {
                         $("#equipamento").empty();

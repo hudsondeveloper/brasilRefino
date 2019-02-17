@@ -35,7 +35,7 @@
                 <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("RespSolicitacao","Solicitacao",new { idSolicitacao = Model.Id})" method="post">
 
 
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="setor">
                             Setor <span class="required">*</span>
                         </label>
@@ -61,12 +61,12 @@
                                 <option value="FATURAMENTO">FATURAMENTO</option>
                             </select>
                         </div>
-                    </div>
+                    </div>*@
 
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição</label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Comentário</label>
                         <div class="col-md-4 col-sm-4 col-xs-4">
-                            <textarea id="descricao" name="descricao" class="resizable_textarea form-control" placeholder="Descrição..." required></textarea>
+                            <textarea id="descricao" name="descricao" class="resizable_textarea form-control" placeholder="Comentário..." required></textarea>
                         </div>
                     </div>
 
@@ -76,10 +76,37 @@
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-4">
                             <select class="form-control" name="situacao" id="situacao" required>
-                                <option value="" selected>SELECIONE</option>
-                                <option value="PENDENTE">PENDENTE</option>
-                                <option value="FINALIZADA">FINALIZADA</option>
-                                <option value="CANCELADA">CANCELADA</option>
+                                @{
+                                    if (Model.situacao == B_R.Models.situacaoSolicitacao.PENDENTE)
+                                    {
+                                        <option selected value="PENDENTE">PENDENTE</option>
+                                        <option value="FINALIZADA">FINALIZADA</option>
+                                        <option value="REABERTURA">REABERTURA</option>
+                                        <option value="CANCELADA">CANCELADA</option>
+                                    }
+                                    else if (Model.situacao == B_R.Models.situacaoSolicitacao.CANCELADA)
+                                    {
+                                        <option value="PENDENTE">PENDENTE</option>
+                                        <option value="FINALIZADA">FINALIZADA</option>
+                                        <option value="REABERTURA">REABERTURA</option>
+                                        <option selected value="CANCELADA">CANCELADA</option>
+                                    }
+                                    else if (Model.situacao == B_R.Models.situacaoSolicitacao.REABERTURA)
+                                    {
+                                        <option value="PENDENTE">PENDENTE</option>
+                                        <option value="FINALIZADA">FINALIZADA</option>
+                                        <option selected value="REABERTURA">REABERTURA</option>
+                                        <option value="CANCELADA">CANCELADA</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="PENDENTE">PENDENTE</option>
+                                        <option selected value="FINALIZADA">FINALIZADA</option>
+                                        <option value="REABERTURA">REABERTURA</option>
+                                        <option value="CANCELADA">CANCELADA</option>
+                                    }
+                                }
+
                             </select>
                         </div>
                     </div>

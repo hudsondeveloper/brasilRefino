@@ -23,26 +23,7 @@
             },
             dom: "Blfrtip",
             buttons: [
-                {
-                    extend: "copy",
-                    className: "btn-sm"
-                },
-                {
-                    extend: "csv",
-                    className: "btn-sm"
-                },
-                {
-                    extend: "excel",
-                    className: "btn-sm"
-                },
-                {
-                    extend: "pdfHtml5",
-                    className: "btn-sm"
-                },
-                {
-                    extend: "print",
-                    className: "btn-sm"
-                },
+              
             ],
             responsive: true
         });
@@ -50,9 +31,29 @@
 
 
 </script>
+<div>
+    <a href="@Url.Action("SSM","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+        <i class="fa fa-edit"></i> SSM
+    </a>
+    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+        <i class="fa fa-edit"></i> Linhas,Hidrantes e Bombas
+    </a>
+    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+        <i class="fa fa-edit"></i> Serviços a quente
+    </a>
+    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+        <i class="fa fa-edit"></i> Civil, Jardinagem e gerais
+    </a>
+    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+        <i class="fa fa-edit"></i> Espaço confinado
+    </a>
+    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+        <i class="fa fa-edit"></i> Serviços de Eletricidade
+    </a>
+</div>
 
 <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app" style="width:100%">
-    <i class="fa fa-edit"></i> Responder Solicitação
+    <i class="fa fa-edit"></i> Adicionar Comentário
 </a>
 <div>
     <table id="datatableHUD" class="hover" style="width:100%">

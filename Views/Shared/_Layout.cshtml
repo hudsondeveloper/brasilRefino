@@ -48,7 +48,7 @@
     <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
     <script type="text/javascript">
         jQuery(window).load(function ($) {
-            //atualizaRelogio();
+            atualizaRelogio();
         });
     </script>
 </head>
@@ -70,7 +70,7 @@
                             <h3>Menu</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a href="@Url.Action("PrimeiraPagina", "Panel")"><i class="fa fa-home"></i> inicio </a>
+                                    <a href="@Url.Action("Index", "Panel")"><i class="fa fa-home"></i> inicio </a>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-send"></i> Solicitação <span class="fa fa-chevron-down"></span></a>
@@ -80,21 +80,29 @@
                                     </ul>
                                 </li>
                                 <li>
+                                    <a><i class="fa fa-file-text"></i> Ranking <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="@Url.Action("Setor", "Ranking")">Setor</a></li>
+                                        <li><a href=""@Url.Action("Equipamento", "Ranking")">Equipamento</a></li>
+                                        <li><a href="@Url.Action("Usuario", "Ranking")">Usuário</a></li>
+                                    </ul>
+                                </li>
+                                <li>
                                     <a><i class="fa fa-file-text"></i> Relatorios <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="#">Inspeções</a></li>
+                                        <li><a href="@Url.Action("Index","Relatorio")">Inspeções</a></li>
                                         <li><a href="#">Recomendações</a></li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a  href="#"><i class="fa fa-desktop"></i> Plano de Inspeção </a>
+                                    <a href="#"><i class="fa fa-desktop"></i> Plano de Inspeção </a>
                                 </li>
                                 <li>
                                     <a><i class="fa fa-plus-square"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a  href="#">Setor</a></li>
+                                        <li><a href="#">Setor</a></li>
                                         <li><a href="@Url.Action("Index","Equipamento")">Equipamento</a></li>
-                                        <li><a  href="#">Modalidade</a></li>
+                                        <li><a href="#">Modalidade</a></li>
                                         <li><a href="@Url.Action("Index","Area")">Área</a></li>
                                     </ul>
                                 </li>

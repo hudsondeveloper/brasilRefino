@@ -1,0 +1,74 @@
+﻿@model List<B_R.Controllers.RankingController.SetorChamado>
+
+@{
+    ViewBag.titulo = "Setor";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#datatableHUD").DataTable({
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "resultado não encontrado",
+                "sEmptyTable": "Nenhum dado disponivel nesta tabla",
+                "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros de 0 a 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+            },
+            dom: "Blfrtip",
+            buttons: [
+
+            ], "order": [[1, "desc"]],
+            responsive: true
+        });
+    });
+
+
+</script>
+
+<div>
+    <table id="datatableHUD" class="hover" style="width:100%">
+        <thead>
+            <tr style="background-color:white">
+                <th>Setor</th>
+                <th>Chamados</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.setor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.chamado)
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+
+<script>
+
+</script>
+
+
+
+
+
+
+
+
+

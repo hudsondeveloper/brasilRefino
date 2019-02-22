@@ -33,22 +33,22 @@
 </script>
 <div>
     <a href="@Url.Action("SSM","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
-        <i class="fa fa-edit"></i> SSM
+        <i class="fa fa-file"></i> SSM
+    </a>
+    <a href="@Url.Action("LinhasHidrantesBombas","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+        <i class="fa fa-file"></i> Linhas,Hidrantes e Bombas
     </a>
     <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
-        <i class="fa fa-edit"></i> Linhas,Hidrantes e Bombas
+        <i class="fa fa-file"></i> Serviços a quente
     </a>
     <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
-        <i class="fa fa-edit"></i> Serviços a quente
+        <i class="fa fa-file"></i> Civil, Jardinagem e gerais
     </a>
     <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
-        <i class="fa fa-edit"></i> Civil, Jardinagem e gerais
+        <i class="fa fa-file"></i> Espaço confinado
     </a>
     <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
-        <i class="fa fa-edit"></i> Espaço confinado
-    </a>
-    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
-        <i class="fa fa-edit"></i> Serviços de Eletricidade
+        <i class="fa fa-file"></i> Serviços de Eletricidade
     </a>
 </div>
 

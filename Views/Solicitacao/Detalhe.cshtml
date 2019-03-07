@@ -32,22 +32,22 @@
 
 </script>
 <div>
-    <a href="@Url.Action("SSM","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+    <a href="@Url.Action("SSM","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id } )" class="btn btn-app" target="_blank">
         <i class="fa fa-file"></i> SSM
     </a>
-    <a href="@Url.Action("LinhasHidrantesBombas","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+    <a href="@Url.Action("LinhasHidrantesBombas","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app" target="_blank">
         <i class="fa fa-file"></i> Linhas,Hidrantes e Bombas
     </a>
-    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+    <a href="@Url.Action("ServicosaQuente","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app" target="_blank">
         <i class="fa fa-file"></i> Serviços a quente
     </a>
-    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+    <a href="@Url.Action("ManutencaoCivilJardinagemServicosGerais","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app" target="_blank">
         <i class="fa fa-file"></i> Civil, Jardinagem e gerais
     </a>
-    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+    <a href="@Url.Action("EspacoConfinado","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app" target="_blank">
         <i class="fa fa-file"></i> Espaço confinado
     </a>
-    <a href="@Url.Action("RespSolicitacao","Solicitacao",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app">
+    <a href="@Url.Action("ServicosEletricidade","Relatorio",new {id = Model.FirstOrDefault().solicitacao.Id })" class="btn btn-app" target="_blank">
         <i class="fa fa-file"></i> Serviços de Eletricidade
     </a>
 </div>
@@ -62,7 +62,7 @@
                 <th>Solicitante</th>
                 <th>Setor</th>
                 <th>Descrição</th>
-                <th>Estado</th>
+                <th>Status</th>
                 <th>Data</th>
             </tr>
         </thead>

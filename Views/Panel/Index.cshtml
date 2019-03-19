@@ -22,7 +22,7 @@
             }, "order": [[0, "desc"]],
             dom: "Blfrtip",
             buttons: [
-           
+
             ],
             responsive: true,
             "bPaginate": false
@@ -32,14 +32,14 @@
 
 </script>
 <form action="@Url.Action("Index","Panel")" method="post" style="display:grid;margin-bottom:2%;">
-  <div class="form-group">
-  
-        <div class="col-md-3 col-sm-3 col-xs-3">
+    <div class="form-group">
+
+        <div class="col-md-2 col-sm-2 col-xs-2">
             <select class="form-control" name="setor" id="setor">
-                <option value="" selected >SETOR</option>
-                <option value="MECANICA">MECANICA</option>
-                <option value="AUTOMACAO">AUTOMACAO</option>
-                <option value="ELETRICA">ELETRICA</option>
+                <option value="" selected>SETOR</option>
+                <option value="MECANICA">MECÂNICA</option>
+                <option value="AUTOMACAO">AUTOMAÇÃO</option>
+                <option value="ELETRICA">ELÉTRICA</option>
                 <option value="CIVIL">CIVIL</option>
                 <option value="SEGURANÇA">SEGURANÇA</option>
                 <option value="COMPRAS">COMPRAS</option>
@@ -58,17 +58,33 @@
         </div>
 
 
-      <div class="col-md-3 col-sm-3 col-xs-3">
-          <select class="form-control" name="situacao" id="situacao">
-              <option value="" selected>SITUAÇÃO</option>
-              <option value="FINALIZADA">FINALIZADA</option>
-              <option value="PENDENTE">PENDENTE</option>
-              <option value="CANCELADA">CANCELADA</option>
-              <option value="REABERTURA">REABERTURA</option>
-          </select>
-      </div>
-    <input type="submit" value="Pesquisar" class="col-md-3 col-sm-3 col-xs-3 "/>
-  </div>
+        <div class="col-md-2 col-sm-2 col-xs-2">
+            <select class="form-control" name="situacao" id="situacao">
+                <option value="" selected>SITUAÇÃO</option>
+                <option value="FINALIZADA">FINALIZADA</option>
+                <option value="PENDENTE">PENDENTE</option>
+                <option value="CANCELADA">CANCELADA</option>
+                <option value="REABERTURA">REABERTURA</option>
+            </select>
+        </div>
+        <input type="submit" value="Pesquisar"  />
+    </div>
+</form>
+<form action="@Url.Action("Index","Panel",new {data=1 })" method="post" style="display:grid;margin-bottom:2%;">
+    <div class="form-group">
+        <div class="col-md-2 col-sm-2 col-xs-2" >
+
+            <label>Data Inicial</label>
+            <input type="date" name="dateIni" id="dateIni" class="form-control">
+
+        </div>
+
+        <div class="col-md-2 col-sm-2 col-xs-2" >
+            <label>Data Final</label>
+            <input type="date" name="dateFim" id="dateFim" class="form-control">
+        </div>
+            <input type="submit" value="Pesquisar"  />
+        </div>
 </form>
 <div class=" ">
     <div>
@@ -92,42 +108,42 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.solicitante.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.equipamento.area.codigo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.equipamento.tag)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.descricao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.situacao)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.prioridade)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.modalidade)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.setor)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.abertura)
-                    </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.solicitante.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equipamento.area.codigo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.equipamento.tag)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.situacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.prioridade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.modalidade)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.setor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.abertura)
+                        </td>
 
-                    <td>
-                        <a href="@Url.Action("Detalhe","Solicitacao",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" class="fa fa-search fa-2x"></i></a>
-                    </td>
-                </tr>
+                        <td>
+                            <a href="@Url.Action("Detalhe","Solicitacao",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" class="fa fa-search fa-2x"></i></a>
+                        </td>
+                    </tr>
 
                 }
 

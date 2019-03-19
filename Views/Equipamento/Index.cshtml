@@ -51,7 +51,7 @@
             <select class="form-control" name="situacao" id="situacao">
                 <option value="" selected>SITUAÇÃO</option>
                 <option value="ATIVO">ATIVO</option>
-                <option value="FORA_DE_OPERACAO">FORA DE OPERACAO</option>
+                <option value="FORA_DE_OPERACAO">FORA DE OPERAÇAO</option>
                 <option value="EM_MONTAGEM">EM MONTAGEM</option>
                 <option value="DESATIVADA">DESATIVADA</option>
             </select>
@@ -110,7 +110,7 @@
 
                     <a href="@Url.Action("Comentario","Equipamento",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="comentario" class="fa fa-file fa-2x"></i></a>
 
-                    <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = item.area.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="imagen" class="fa fa-download fa-2x"></i></a>
+                    <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = item.area.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="arquivo" class="fa fa-download fa-2x"></i></a>
                 </td>
             </tr>
 

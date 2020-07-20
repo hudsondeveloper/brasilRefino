@@ -1,0 +1,178 @@
+﻿@model B_R.Models.EntradaAlmoxarifado
+@{
+    ViewBag.titulo = "Editar Item";
+    var idItem = Session["idItem"];
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>  <small>  </small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Settings 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Editar","EntradaAlmoxarifado",new {idItem = idItem })" method="post">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="entrada">
+                            Entrada <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="number" id="entrada" name="entrada" required="required" class="form-control col-md-4 col-xs-4" value="@Model.entrada">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="valor">
+                            Valor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="valor" name="valor" required="required" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4" value="@Model.valor.ToString("C")">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="data">
+                            Data <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="date" id="data" name="data" required="required" class="form-control col-md-4 col-xs-4" value="@Model.data.ToString("yyyy-MM-dd")">
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="aplicacao">
+                            Aplicação <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="aplicacao" name="aplicacao" required="required" class="form-control col-md-4 col-xs-4" value="@Model.aplicacao">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="uso">
+                            Em uso <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="checkbox" id="uso" name="uso" class="form-control col-md-4 col-xs-4" checked="@Model.uso">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="nNotaFiscal">
+                            Nº Not. Fisc. <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="number" id="nNotaFiscal" name="nNotaFiscal" class="form-control col-md-4 col-xs-4" value="@Model.nNotaFiscal">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="fornecedor">
+                            Fornecedor<span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="fornecedor" name="fornecedor" class="form-control col-md-4 col-xs-4" value="@Model.fornecedor">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="dataEmissao">
+                            Data Emissão <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="date" id="dataEmissao" name="dataEmissao" class="form-control col-md-4 col-xs-4" value="@Model.dataEmissao.ToString("yyyy-MM-dd")">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="valorNota">
+                            Valor Nota <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="valorNota" name="valorNota" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4" value="@Model.valorNota">
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            <button type="submit" class="btn btn-success">Editar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function moeda(a, e, r, t) {
+        let n = ""
+            , h = j = 0
+            , u = tamanho2 = 0
+            , l = ajd2 = ""
+            , o = window.Event ? t.which : t.keyCode;
+        if (13 == o || 8 == o)
+            return !0;
+        if (n = String.fromCharCode(o),
+            -1 == "0123456789".indexOf(n))
+            return !1;
+        for (u = a.value.length,
+            h = 0; h < u && ("0" == a.value.charAt(h) || a.value.charAt(h) == r); h++)
+            ;
+        for (l = ""; h < u; h++)
+            -1 != "0123456789".indexOf(a.value.charAt(h)) && (l += a.value.charAt(h));
+        if (l += n,
+            0 == (u = l.length) && (a.value = ""),
+            1 == u && (a.value = "0" + r + "0" + l),
+            2 == u && (a.value = "0" + r + l),
+            u > 2) {
+            for (ajd2 = "",
+                j = 0,
+                h = u - 3; h >= 0; h--)
+                3 == j && (ajd2 += e,
+                    j = 0),
+                    ajd2 += l.charAt(h),
+                    j++;
+            for (a.value = "",
+                tamanho2 = ajd2.length,
+                h = tamanho2 - 1; h >= 0; h--)
+                a.value += ajd2.charAt(h);
+            a.value += r + l.substr(u - 2, u)
+        }
+        return !1
+    }
+</script>

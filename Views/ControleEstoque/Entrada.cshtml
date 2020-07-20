@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.titulo = "Entrada";
+
+}
+
+<script>
+       var  entradas = localStorage.getItem("entradas");
+    if (entradas == null) {
+        entradas = []
+    } else {
+        entradas = JSON.parse(entradas)
+    }
+
+
+     var dataObject = entradas
+
+    var dataSet = [];
+    $.each(dataObject, function (index, data) {
+        let codigo = data.Codigo;
+      dataSet.push([data.Codigo,data.EquipamentoDescricao,data.TipoUnitario,data.Fornecedor,data.Quantidade,data.LocalAnterior,data.LocalAtual,data.Descricao,data.Dia,"<a href='/ControleEstoque/CadastroEntrada?codigo="+ data.Codigo+"' style='box-shadow:none'>Saida</a>"]);
+    });
+
+    $(document).ready(function () {
+        $("#datatableHUD").DataTable({
+            data: dataSet,
+            columns: [
+            { title: "Codigo" },
+            { title: "EquipamentoDescricao" },
+            { title: "TipoUnitario" },
+            { title: "Fornecedor." },
+            { title: "Quantidade" },
+            { title: "LocalAnterior" },
+            { title: "LocalAtual" },
+            { title: "Descricao" },
+            { title: "Dia" },
+             { title: "Saida" }
+        ],
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "resultado não encontrado",
+                "sEmptyTable": "Nenhum dado disponivel nesta tabla",
+                "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros de 0 a 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+            },
+            //"order": [[0, "asc"]],
+            dom: "Blfrtip",
+            buttons: [
+
+            ],
+            responsive: true,
+            "bPaginate": false
+        });
+    });
+
+
+</script>
+
+<a href="@Url.Action("CadastroEntrada","ControleEstoque")" class="btn btn-app" style="width:100%">
+    <i class="fa fa-edit"></i> Adicionar
+</a>
+
+<div>
+
+    <table id="datatableHUD" class="hover" style="width:100%">
+ 
+    </table>
+</div>
+
+<script>
+    window.onload = function () {
+
+    }      
+</script>
+<style>
+    #datatableHUD thead tr{
+       background-color:white
+    }
+</style>
+

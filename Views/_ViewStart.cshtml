@@ -1,3 +1,15 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿
+@{
+    var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
+    string layout = "";
+
+    if (controller == "ItemAlmoxarifado" || controller == "EntradaAlmoxarifado" || controller == "SaidaAlmoxarifado")
+    {
+        layout = "~/Views/Shared/_LayoutControleEstoque.cshtml";
+    }
+    else
+    {
+        layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    Layout = layout;
 }

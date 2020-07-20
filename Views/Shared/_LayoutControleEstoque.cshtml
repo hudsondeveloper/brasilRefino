@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    <link rel="icon" href="images/favicon.ico" type="image/ico" /> -->
+    <!--  <link rel="icon" href="images/favicon.ico" type="image/ico" /> -->
 
     <title>BRASIL REFINO </title>
     <!-- Bootstrap Colorpicker -->
@@ -43,9 +43,10 @@
     <link href="~/template/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
     <link href="~/template/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
     <link href="~/template/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+    <script src="~/Content/tabela.min.js"></script>
 
 
-    <script src="https://code.jquery.com/jquery-1.11.2.js"></script>
+    <script src="~/Content/jquery-1.11.2.js"></script>
     <script type="text/javascript">
         jQuery(window).load(function ($) {
             // atualizaRelogio();
@@ -59,7 +60,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view" style="background-image: url('/images/banner.jpg');min-height:1000PX">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><img src="/images/Logo-Brasil-Refino.png" height="47px"> <span>BRASIL REFINO</span></a>
+                        <a href="" data-acao="inicio" class="site_title"><img src="/images/Logo-Brasil-Refino.png" height="47px"> <span>BRASIL REFINO</span></a>
                     </div>
                     <div class="clearfix"></div>
                     <br />
@@ -70,42 +71,15 @@
                             <h3>Menu</h3>
                             <ul class="nav side-menu">
                                 <li>
-                                    <a href="@Url.Action("Index", "Panel")"><i class="fa fa-home"></i> inicio </a>
+                                    <a href="@Url.Action("Index", "ItemAlmoxarifado")"><i class="fa fa-home"></i> Estoque atual</a>
                                 </li>
-                                <li>
-                                    <a><i class="fa fa-send"></i> Solicitação <span class="fa fa-chevron-down"></span></a>
+                                @*<li>
+                                    <a><i class="fa fa-send"></i> Cadastrar <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("Index", "Panel")">Buscar</a></li>
-                                        <li><a href="@Url.Action("CadastrarSolicitacao", "Solicitacao")">Solicitar</a></li>
+                                        <li><a href="@Url.Action("Entrada", "ControleEstoque")">Entrada</a></li>
+                                        <li><a href="@Url.Action("Saida", "ControleEstoque")">Saída</a></li>
                                     </ul>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-file-text"></i> Ranking <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="@Url.Action("Setor", "Ranking")">Setor</a></li>
-                                        <li><a href="@Url.Action("Equipamento", "Ranking")">Equipamento</a></li>
-                                        <li><a href="@Url.Action("Usuario", "Ranking")">Usuário</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    @*<a><i class="fa fa-file-text"></i> Relatorios <span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu">
-                                                <li><a href="@Url.Action("Index","Relatorio")">Inspeções</a></li>
-                                                <li><a href="#">Recomendações</a></li>
-                                            </ul>
-                                        </li>*@
-                                <li>
-                                    <a href="#"><i class="fa fa-desktop"></i> Plano de Inspeção </a>
-                                </li>
-                                <li>
-                                    <a><i class="fa fa-plus-square"></i> Cadastros <span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
-                                        @*<li><a href="#">Setor</a></li>*@
-                                        <li><a href="@Url.Action("Index","Equipamento")">Equipamento</a></li>
-                                        @*<li><a href="#">Modalidade</a></li>*@
-                                        <li><a href="@Url.Action("Index","Area")">Área</a></li>
-                                    </ul>
-                                </li>
+                                </li>*@
                             </ul>
                         </div>
 
@@ -145,7 +119,7 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                    <li><a href="@Url.Action("Logoff", "Home")"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
+                                    <li><a href="@Url.Action("Modules", "Home")"><i class="fa fa-sign-out pull-right"></i> Sair</a></li>
                                 </ul>
                             </li>
 
@@ -274,6 +248,11 @@
 </body>
 </html>
 <script>
+    $("[data-acao='inicio']").click(inicio);
+
+        function inicio() {
+        window.location.href = '@Url.Action("Index", "ItemAlmoxarifado")';
+    }
     function atualizaRelogio() {
         var momentoAtual = new Date();
 
@@ -344,16 +323,16 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        atualizarChamados();
+        //atualizarChamados();
 
-        function atualizarChamados() {
+        @*function atualizarChamados() {
 
             var url= "@Url.Action("contarChamados","Solicitacao")"
 
             $.get(url, null, function (data) {
                 $("#solicitacoes").html(data)
             });
-        };
+        };*@
     });
 
 

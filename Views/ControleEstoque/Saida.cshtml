@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.titulo = "Saida";
+
+}
+
+<script>
+    $(document).ready(function () {
+        $("#datatableHUD").DataTable({
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "resultado não encontrado",
+                "sEmptyTable": "Nenhum dado disponivel nesta tabla",
+                "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros de 0 a 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+            },
+            //"order": [[0, "asc"]],
+            dom: "Blfrtip",
+            buttons: [
+
+            ],
+            responsive: true,
+            "bPaginate": false
+        });
+    });
+
+
+</script>
+
+<a href="@Url.Action("CadastroSaida","ControleEstoque")" class="btn btn-app" style="width:100%">
+    <i class="fa fa-edit"></i> Adicionar
+</a>
+
+<div>
+
+    <table id="datatableHUD" class="hover" style="width:100%">
+        <thead>
+            <tr style="background-color:white">
+
+                <th>Id</th>
+                <th>Equipamento</th>
+                <th>TipoUnitario</th>
+                <th>Fornecedor</th>
+                <th>Quantidade</th>
+                <th>LocalAnterior</th>
+                <th>LocalAtual</th>
+                <th>Descricao</th>
+                <th>Dia</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+
+<script>
+    window.onload = function () {
+        Listar()
+    }
+         function Listar() {
+            saidas = localStorage.getItem("saidas");
+             if (saidas != null) {
+
+                 var listar = JSON.parse(saidas)
+
+                 $("#datatableHUD tbody").html("")
+                 for (var i = 0; i < listar.length; i++) {
+                     var equip = listar[i];
+                     
+                     $("#datatableHUD tbody").append("<tr role='row'>");
+                     $("#datatableHUD tbody").append("<td>" + equip.Id + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.EquipamentoDescricao + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.TipoUnitario + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.Fornecedor + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.Quantidade + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.LocalAnterior + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.LocalAtual + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.Descricao + "</td>");
+                     $("#datatableHUD tbody").append("<td>" + equip.Dia + "</td>");
+                     $("#datatableHUD tbody").append("</tr>");
+                 }
+             }
+
+}
+</script>
+<style>
+    #datatableHUD_filter {
+        display: none !important
+    }
+</style>
+

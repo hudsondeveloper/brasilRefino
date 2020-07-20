@@ -1,11 +1,11 @@
 ﻿@{
-                /**/
+    /**/
 
-                Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
-<html lang="en">
+@*<html manifest="~/manifest.appcache" type="text/cache-manifest">*@
 <head>
 
     <meta charset="UTF-8">
@@ -38,49 +38,32 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
-                <form class="login100-form validate-form" method="post" action="@Url.Action("Login","Home")">
+                <div class="login100-form validate-form" ">
 
                     <div style="text-align:center">
                         <img src="/images/Logo-Brasil-Refino.png" height="95px" />
                         <span class="login100-form-title p-b-43">
-                            Login
+                            MÓDULOS
                         </span>
                     </div>
 
 
-                    <div class="wrap-input100 validate-input" data-validate="Valid login is required: ex@abc.xyz">
-                        <input class="input100" type="text" name="login">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Login</span>
-                    </div>
-
-
-                    <div class="wrap-input100 validate-input" data-validate="Password is required">
-                        <input class="input100" type="password" name="password">
-                        <span class="focus-input100"></span>
-                        <span class="label-input100">Senha</span>
-                    </div>
-
-
-
-
                     <div class="container-login100-form-btn">
-                        <button class="login100-form-btn">
-                            Entrar
-                        </button>
-                    </div>
-
-                    <div class="text-center p-t-46 p-b-20">
-                        <a href="@Url.Action("Cadastrar","Home")" class="txt1">
-                            cadastro
-                        </a>|
-                        <a href="@Url.Action("Modules","Home")" class="txt1">
-                            módulos
+                        <a class="button login100-form-btn" href="@Url.Action("Index","Home")">
+                            BRASIL REFINO
+                 
                         </a>
                     </div>
-           
+                    <br />
+                    <div class="container-login100-form-btn">
+                        <a class="button login100-form-btn" href="@Url.Action("Index","ItemAlmoxarifado")">
+                            CONTROLE DE ESTOQUE
+                        </a>
+                    </div>
 
-                </form>
+
+
+                </div>
 
                 <div class="login100-more" style="background-image: url('/images/banner.jpg');">
                 </div>
@@ -111,5 +94,7 @@
 
 </body>
 </html>
+<script>
 
+</script>
 

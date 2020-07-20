@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.titulo = "Estoque atual";
+}
+@*<script src="~/Content/tabela.min.js"></script>*@
+<script>
+    $(document).ready(function () {
+        $("#datatableHUD").DataTable({
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "resultado não encontrado",
+                "sEmptyTable": "Nenhum dado disponivel nesta tabla",
+                "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros de 0 a 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+            }, "order": [[0, "desc"]],
+            dom: "Blfrtip",
+            buttons: [
+
+            ],
+            responsive: true,
+            "bPaginate": false
+        });
+    });
+
+
+</script>
+<div class=" ">
+    <div>
+        <table id="datatableHUD" class="hover" style="width:100%">
+            <thead>
+                <tr style="background-color:white">
+                    <th>Id</th>
+                    <th>Horario</th>
+                    <th>Equipamento</th>
+                    <th>Tipo Unitário</th>
+                    <th>Fornecedor</th>
+                    <th>Estoque Atual</th>
+                    <th>Local Anterior</th>
+                    <th>Local Atual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        teste
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                    <td>
+                        teste
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script src="@Url.Content("~/Scripts/offline.js")" type="text/javascript"></script>
+<script>
+
+    window.onload = function () {
+   
+            if (navigator.onLine) {
+                carregarEquipamentos()
+            } else {
+                alert("Sistema Funcionando de forma offline")
+            }
+        
+    }
+
+</script>
+
+
+

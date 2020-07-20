@@ -1,0 +1,216 @@
+﻿
+@{
+    ViewBag.titulo = "Cadastro  Entrada";
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>  <small>  </small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li>
+                        <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#">Settings 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="close-link"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <br />
+                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="#" method="post">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="Codigo">
+                            Código <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Codigo" name="Codigo" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Equipamento">
+                            Equipamento <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <select class="form-control" name="Equipamento" id="Equipamento" required>
+
+                                <option value="" selected></option>
+                                @{
+
+
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="TipoUnitario">
+                            Tipo Unitário <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="TipoUnitario" name="TipoUnitario" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="Fornecedor">
+                            Fornecedor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Fornecedor" name="Fornecedor" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="Quantidade">
+                            Quantidade <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="Quantidade" name="Quantidade" required="required" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="LocalAnterior">
+                            Local Anterior <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="LocalAnterior" name="LocalAnterior" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="LocalAtual">
+                            Local Atual <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="LocalAtual" name="LocalAtual" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Descrição</label>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <textarea id="Descricao" name="descricao" class="resizable_textarea form-control" placeholder="Descrição..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            <button data-acao="Ok" type="submit" class="btn btn-success">Cadastrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        preencherEquipamento()
+
+var query = location.search.slice(1);
+var partes = query.split('&');
+var data = {};
+partes.forEach(function (parte) {
+    var chaveValor = parte.split('=');
+    var chave = chaveValor[0];
+    var valor = chaveValor[1];
+    data[chave] = valor;
+});
+
+console.log(data);
+    }
+    function preencherEquipamento() {
+       var equipamentos = localStorage.getItem("equipamentos");
+    if (equipamentos != null) {
+        equipamentos = JSON.parse(equipamentos);// Recupera os dados armazenados
+    } else {
+        equipamentos = [];
+    }
+
+       var ele = document.getElementById('Equipamento');
+            for (var i = 0; i < equipamentos.length; i++) {
+                // Popular SELECT com JSON.
+                ele.innerHTML = ele.innerHTML +
+                    '<option value="' + equipamentos[i]['Id'] + '">' + equipamentos[i]['descricao_equipamento'] + '</option>';
+            }
+    }
+
+    $("[data-acao='Ok']").click(Salvar);
+
+    function RetornaDataHoraAtual(){
+        var dNow = new Date();
+        var localdate = dNow.getDate() + '/' + (dNow.getMonth()+1) + '/' + dNow.getFullYear();
+        return localdate;
+        }
+
+        function Salvar() {
+        var entradas = localStorage.getItem("entradas");
+        if (entradas != null) {
+            entradas = JSON.parse(entradas);// Recupera os dados armazenados
+        } else {
+            entradas = [];
+        }
+
+        var model = {
+        Id:"",
+        EquipamentoDescricao: "",
+        EquipamentoId: "",
+        TipoUnitario: "",
+        Fornecedor: "",
+        Quantidade: "",
+        LocalAnterior: "",
+        LocalAtual: "",
+        Descricao: "",
+        Dia: "",
+        Syncronizado: "",
+        Codigo: "",
+        };
+
+        model.Id = "";
+        model.Syncronizado = "";
+        var select = document.getElementById('Equipamento');
+        var value = select.options[select.selectedIndex].value;
+        model.EquipamentoId = value;
+        var select = document.getElementById('Equipamento');
+        var value = select.options[select.selectedIndex].text;
+            model.EquipamentoDescricao = value;
+            model.Codigo = $("#Codigo").val();
+        model.TipoUnitario = $("#TipoUnitario").val();
+        model.Fornecedor = $("#Fornecedor").val()
+        model.Quantidade = $("#Quantidade").val()
+        model.LocalAnterior = $("#LocalAnterior").val()
+        model.LocalAtual = $("#LocalAtual").val()
+        model.Descricao = $("#Descricao").val()
+        model.Dia =RetornaDataHoraAtual()
+
+        entradas.push(model);
+        localStorage.setItem("entradas", JSON.stringify(entradas));
+        window.location.href = '@Url.Action("Entrada", "ControleEstoque")';
+
+
+        
+
+
+    return true;
+}
+</script>

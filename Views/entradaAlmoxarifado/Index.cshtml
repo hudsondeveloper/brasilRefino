@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<B_R.Models.EntradaAlmoxarifado>
 @{
-    ViewBag.titulo = "Entrada";
+    ViewBag.titulo = "Entrada " + Session["Item"];
     var idItem = Session["idItem"];
 }
 @*<script src="~/Content/tabela.min.js"></script>*@
@@ -44,12 +44,13 @@
                 <thead>
                     <tr style="background-color:white">
                         <th>Código</th>
+                        <th>Código Item</th>
                         <th>Descrição</th>
                         <th>valor</th>
+                        <th>valor Unitário</th>
                         <th>data</th>
                         <th>entrada</th>
                         <th>Uni. medida</th>
-                        <th>Aplicação</th>
                         <th>Em uso</th>
                         <th>Nº Not. Fisc.</th>
                         <th>Fornec.</th>
@@ -63,29 +64,32 @@
                     {
                     <tr>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.item.Id)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.item.descricao)
                         </td>
                         <td>
-                           @item.valor.ToString("C")
+                            @item.valor.ToString("C")
                         </td>
                         <td>
-                            @if(item.data.ToString() != "01/01/0001 00:00:00")
+                            @item.valorUnit.ToString("C")
+                        </td>
+                        <td>
+                            @if (item.data.ToString() != "01/01/0001 00:00:00")
                             {
                                 @item.data.ToString("dd/MM/yyyy")
                             }
-   
+
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.entrada)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.item.unidadeMedida)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.aplicacao)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.uso)
@@ -107,7 +111,7 @@
                         </td>
                         <td>
                             <a href="@Url.Action("Editar","EntradaAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
-                            <a href="@Url.Action("Delete","EntradaAlmoxarifado",new { id = item.Id,idItem = idItem })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>                                                        
+                            <a href="@Url.Action("Delete","EntradaAlmoxarifado",new { id = item.Id,idItem = idItem })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>
                         </td>
                     </tr>
 

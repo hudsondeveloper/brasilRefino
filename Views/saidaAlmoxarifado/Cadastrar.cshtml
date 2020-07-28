@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.titulo = "Cadastrar Saida de Item";
+    ViewBag.titulo = "Cadastrar Saida de Item " + Session["Item"];
         var idItem = Session["idItem"];
 }
 
@@ -48,7 +48,7 @@
 
                                     foreach (var equipamento in ViewBag.equipamento)
                                     {
-                             <option value="@equipamento.Id">@equipamento.tag - @equipamento.descricao</option>
+                                    <option value="@equipamento.Id">área - @equipamento.area.codigo | @equipamento.tag - @equipamento.descricao_equipamento  </option>
                                     }
                                 }
 
@@ -58,22 +58,12 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="saida">
-                            Saida <span class="required">*</span>
+                            Quantidade de Saída <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
                             <input type="number" id="saida" name="saida" required="required" class="form-control col-md-4 col-xs-4">
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="valor">
-                            Valor <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="valor" name="valor" required="required" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="data">
@@ -108,7 +98,6 @@
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <button class="btn btn-primary" type="reset">Reset</button>
                             <button type="submit" class="btn btn-success">Cadastrar</button>
                         </div>
                     </div>

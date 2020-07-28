@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<B_R.Models.SaidaAlmoxarifado>
 @{
-    ViewBag.titulo = "Saida";
+    ViewBag.titulo = "Saida " + Session["Item"];
     var idItem = Session["idItem"];
 }
 @*<script src="~/Content/tabela.min.js"></script>*@
@@ -47,9 +47,8 @@
                         <th>Descrição</th>
                         <th>Tag</th>
                         <th>Equipamento</th>
-                        <th>Valor</th>
                         <th>data</th>
-                        <th>Saida</th>
+                        <th>Saída</th>
                         <th>Aplicação</th>
                         <th>Solicitante</th>
                         <th></th>
@@ -70,9 +69,6 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.equipamento.descricao)
-                        </td>
-                        <td>
-                            @item.valor.ToString("C")
                         </td>
                         <td>
                             @if (item.data.ToString() != "01/01/0001 00:00:00")

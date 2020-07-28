@@ -1,4 +1,4 @@
-﻿@model B_R.Models.EntradaAlmoxarifado
+﻿@model B_R.Models.SaidaAlmoxarifado
 @{
     ViewBag.titulo = "Editar Item";
     var idItem = Session["idItem"];
@@ -37,22 +37,12 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="entrada">
-                            Entrada <span class="required">*</span>
+                            Quantidade de Saida <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
                             <input type="number" id="entrada" name="entrada" required="required" class="form-control col-md-4 col-xs-4" value="@Model.entrada">
                         </div>
                     </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="valor">
-                            Valor <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="valor" name="valor" required="required" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4" value="@Model.valor.ToString("C")">
-                        </div>
-                    </div>
-
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="data">
@@ -129,7 +119,6 @@
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <button class="btn btn-primary" type="reset">Reset</button>
                             <button type="submit" class="btn btn-success">Editar</button>
                         </div>
                     </div>

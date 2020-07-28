@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.titulo = "Cadastrar Entrada de Item " + Session["Item"];
+    ViewBag.titulo = "Cadastrar Retorno de Item " + Session["Item"];
         var idItem = Session["idItem"];
 }
 
@@ -33,7 +33,7 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Cadastrar","EntradaAlmoxarifado",new {idItem = idItem })" method="post">
+                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Cadastrar","RetornoAlmoxarifado",new {idItem = idItem })" method="post">
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="entrada">
@@ -41,24 +41,6 @@
                         </label>
                         <div class="col-md-4">
                             <input type="number" id="entrada" name="entrada" required="required" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="valor">
-                            Valor total <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="valor" name="valor" required="required" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="valorUnit">
-                            Valor Unitário<span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="valorUnit" name="valorUnit" required="required" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4">
                         </div>
                     </div>
 
@@ -72,56 +54,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="uso">
-                            Em uso <span class="required">*</span>
+                        <label class="control-label col-md-3" for="responsavel">
+                            Responsável<span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="checkbox" id="uso" name="uso" class="form-control col-md-4 col-xs-4">
+                            <input type="text" id="responsavel" name="responsavel" class="form-control col-md-4 col-xs-4">
                         </div>
                     </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="nNotaFiscal">
-                            Nº Not. Fisc. <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="number" id="nNotaFiscal" name="nNotaFiscal" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="fornecedor">
-                            Fornecedor<span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="fornecedor" name="fornecedor" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="dataEmissao">
-                            Data Emissão <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="date" id="dataEmissao" name="dataEmissao" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="valorNota">
-                            Valor Nota <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="valorNota" name="valorNota" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
-
-
 
                     <div class="ln_solid"></div>
                     <div class="form-group">

@@ -1,6 +1,7 @@
-﻿@model IEnumerable<B_R.Models.ItemAlmoxarifado>
+﻿@model IEnumerable<B_R.Models.BaixaAlmoxarifado>
 @{
-    ViewBag.titulo = "Estoque atual";
+    ViewBag.titulo = "Baixa " + Session["Item"];
+    var idItem = Session["idItem"];
 }
 @*<script src="~/Content/tabela.min.js"></script>*@
 <script>
@@ -35,7 +36,7 @@
 
 <div>
     <div class=" ">
-        <a href="@Url.Action("Cadastrar","ItemAlmoxarifado")" class="btn btn-app" style="width:100%">
+        <a href="@Url.Action("Cadastrar","BaixaAlmoxarifado",new {idItem = idItem })" class="btn btn-app" style="width:100%">
             <i class="fa fa-edit"></i> Adicionar
         </a>
         <div>
@@ -44,11 +45,10 @@
                     <tr style="background-color:white">
                         <th>Código</th>
                         <th>Descrição</th>
-                        <th>End.</th>
-                        <th>Entrada</th>
+                        <th>data</th>
                         <th>Saída</th>
-                        <th>Saldo</th>
-                        <th>Und. medida</th>
+                        <th>Motivo</th>
+                        <th>Solicitante</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -57,33 +57,30 @@
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.codigo)
+                                @Html.DisplayFor(modelItem => item.Id)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.descricao)
+                                @Html.DisplayFor(modelItem => item.item.descricao)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.endereco)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.entrada)
+                                @if (item.data.ToString() != "01/01/0001 00:00:00")
+                                {
+                                    @item.data.ToString("dd/MM/yyyy")
+                                }
+
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.saida)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.saldo)
+                                @Html.DisplayFor(modelItem => item.motivo)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.unidadeMedida)
+                                @Html.DisplayFor(modelItem => item.solicitante)
                             </td>
                             <td>
-                                <a href="@Url.Action("Editar","ItemAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
-                                <a href="@Url.Action("Delete","ItemAlmoxarifado",new { id = item.Id })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>
-                                <a href="@Url.Action("Index","EntradaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="entrada" class="fa fa-arrow-up fa-2x"></i></a>
-                                <a href="@Url.Action("Index","SaidaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="saída" class="fa fa-arrow-down fa-2x"></i></a>
-                                <a href="@Url.Action("Index","RetornoAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="retorno" class="fa fa-retweet fa-2x"></i></a>
-                                <a href="@Url.Action("Index","BaixaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #b31313" ; title="baixa" class="fa fa-trash fa-2x"></i></a>
+                                <a href="@Url.Action("Editar","BaixaAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
+                                <a href="@Url.Action("Delete","BaixaAlmoxarifado",new { id = item.Id,idItem = idItem })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>
                             </td>
                         </tr>
 
@@ -96,8 +93,8 @@
         </div>
     </div>
 </div>
-    <script src="@Url.Content("~/Scripts/offline.js")" type="text/javascript"></script>
-    <script>
+<script src="@Url.Content("~/Scripts/offline.js")" type="text/javascript"></script>
+<script>
 
         window.onload = function () {
 
@@ -110,10 +107,10 @@
         }
 
         function del(){
-  confirm("Tem certeza que deseja Excluir este item ?");
+  confirm("Tem certeza que deseja Excluir esta saida ?");
 }
 
-    </script>
+</script>
 
 
 

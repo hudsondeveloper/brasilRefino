@@ -1,8 +1,9 @@
 ﻿@model B_R.Models.SaidaAlmoxarifado
 @{
-    ViewBag.titulo = "Editar Item";
+    ViewBag.titulo = "Editar Saida";
     var idItem = Session["idItem"];
 }
+
 
 
 <div class="row">
@@ -33,14 +34,40 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Editar","EntradaAlmoxarifado",new {idItem = idItem })" method="post">
+                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Editar","SaidaAlmoxarifado",new {idItem = idItem })" method="post">
+
+                    <input type="hidden" id="saida" name="equipamento_id" required="required" class="form-control col-md-4 col-xs-4" value="@Model.equipamento.Id">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="area">
+                            Equipamento <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <select class="form-control" name="equipamento" id="equipamento" required disabled>
+
+                                @{
+                                    foreach (var equipamento in ViewBag.equipamento)
+                                    {
+                                        if (Model.equipamento.Id == equipamento.Id)
+                                        {
+                                            <option selected value="@equipamento.Id">área - @equipamento.area.codigo | @equipamento.tag - @equipamento.descricao_equipamento  </option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@equipamento.Id">área - @equipamento.area.codigo | @equipamento.tag - @equipamento.descricao_equipamento  </option>
+                                        }
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="entrada">
-                            Quantidade de Saida <span class="required">*</span>
+                        <label class="control-label col-md-3" for="saida">
+                            Quantidade de Saída <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="number" id="entrada" name="entrada" required="required" class="form-control col-md-4 col-xs-4" value="@Model.entrada">
+                            <input type="number" id="saida" name="saida" required="required" class="form-control col-md-4 col-xs-4" value="@Model.saida" readonly>
                         </div>
                     </div>
 
@@ -49,7 +76,7 @@
                             Data <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="date" id="data" name="data" required="required" class="form-control col-md-4 col-xs-4" value="@Model.data.ToString("yyyy-MM-dd")">
+                            <input type="date" id="data" name="data" required="required" class="form-control col-md-4 col-xs-4" value="@Model.data.ToString("yyyy-MM-dd")" readonly>
                         </div>
                     </div>
 
@@ -64,57 +91,15 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="uso">
-                            Em uso <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="checkbox" id="uso" name="uso" class="form-control col-md-4 col-xs-4" checked="@Model.uso">
-                        </div>
-                    </div>
-
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="nNotaFiscal">
-                            Nº Not. Fisc. <span class="required">*</span>
+                        <label class="control-label col-md-3" for="solicitante">
+                            Solicitante<span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="number" id="nNotaFiscal" name="nNotaFiscal" class="form-control col-md-4 col-xs-4" value="@Model.nNotaFiscal">
+                            <input type="text" id="solicitante" name="solicitante" class="form-control col-md-4 col-xs-4" value="@Model.solicitante">
                         </div>
                     </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="fornecedor">
-                            Fornecedor<span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="fornecedor" name="fornecedor" class="form-control col-md-4 col-xs-4" value="@Model.fornecedor">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="dataEmissao">
-                            Data Emissão <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="date" id="dataEmissao" name="dataEmissao" class="form-control col-md-4 col-xs-4" value="@Model.dataEmissao.ToString("yyyy-MM-dd")">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="valorNota">
-                            Valor Nota <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="valorNota" name="valorNota" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4" value="@Model.valorNota">
-                        </div>
-                    </div>
-
-
-
 
                     <div class="ln_solid"></div>
                     <div class="form-group">

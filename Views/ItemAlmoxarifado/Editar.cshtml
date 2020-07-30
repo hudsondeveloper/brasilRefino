@@ -36,20 +36,11 @@
                 <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Editar","ItemAlmoxarifado")" method="post">
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="codigo">
-                            Código <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="number" id="codigo" name="codigo" required="required" class="form-control col-md-4 col-xs-4" value="@Model.codigo">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
                         <label class="control-label col-md-3" for="descricao">
                             Descrição <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" id="descricao" name="descricao" required="required" class="form-control col-md-4 col-xs-4" value="@Model.descricao">
+                            <input type="text" id="descricao" name="descricao" required="required" class="form-control col-md-4 col-xs-4" value="@Model.descricao" readonly>
                         </div>
                     </div>
 
@@ -68,7 +59,7 @@
                             Uni. medida <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" id="unidadeMedida" name="unidadeMedida" required="required" class="form-control col-md-4 col-xs-4" value="@Model.unidadeMedida">
+                            <input type="text" id="unidadeMedida" name="unidadeMedida" required="required" class="form-control col-md-4 col-xs-4" value="@Model.unidadeMedida" readonly>
                         </div>
                     </div>
 

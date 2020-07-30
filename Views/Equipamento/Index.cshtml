@@ -111,6 +111,8 @@
                     <a href="@Url.Action("Comentario","Equipamento",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="comentario" class="fa fa-file fa-2x"></i></a>
 
                     <a href="@Url.Action("UploadFile","Equipamento",new {idequip = item.Id,idarea = item.area.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="arquivo" class="fa fa-download fa-2x"></i></a>
+
+                    <a href="@Url.Action("Estoque","Equipamento",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="estoque" class="fa fa-cog fa-2x"></i></a>
                 </td>
             </tr>
 

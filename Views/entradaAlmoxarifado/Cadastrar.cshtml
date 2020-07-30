@@ -37,7 +37,7 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="entrada">
-                           Quantidade de Entrada <span class="required">*</span>
+                            Quantidade de Entrada <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
                             <input type="number" id="entrada" name="entrada" required="required" class="form-control col-md-4 col-xs-4">
@@ -71,32 +71,24 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="uso">
-                            Em uso <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="checkbox" id="uso" name="uso" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
-
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="nNotaFiscal">
-                            Nº Not. Fisc. <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fornecedor">
+                            Fornecedor <span class="required">*</span>
                         </label>
-                        <div class="col-md-4">
-                            <input type="number" id="nNotaFiscal" name="nNotaFiscal" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <select class="form-control" name="fornecedor_id" id="fornecedor" required>
 
+                                <option value="" selected>SELECIONE</option>
+                                @{
 
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="fornecedor">
-                            Fornecedor<span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="fornecedor" name="fornecedor" class="form-control col-md-4 col-xs-4">
+                                    foreach (var fornecedor in ViewBag.fornecedor)
+                                    {
+                                       <option value="@fornecedor.Id"> @fornecedor.nome </option>
+                                    }
+                                }
+
+                            </select>
                         </div>
                     </div>
 

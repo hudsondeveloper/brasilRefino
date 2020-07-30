@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.titulo = "Cadastrar Item";
+    ViewBag.titulo = "Cadastrar Fornecedor";
 }
 
 
@@ -32,35 +32,25 @@
             </div>
             <div class="x_content">
                 <br />
-                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Cadastrar","ItemAlmoxarifado")" method="post">
+                <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Cadastrar","Fornecedor")" method="post">
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="descricao">
-                            Descrição <span class="required">*</span>
+                        <label class="control-label col-md-3" for="nome">
+                            Nome <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" id="descricao" name="descricao" required="required" class="form-control col-md-4 col-xs-4">
+                            <input type="text" id="nome" name="nome" required="required" class="form-control col-md-4 col-xs-4">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="endereco">
-                            Endereço <span class="required">*</span>
+                        <label class="control-label col-md-3" for="Nfiscal">
+                            Nota Fiscal <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" id="endereco" name="endereco" required="required" class="form-control col-md-4 col-xs-4">
+                            <input type="text" id="Nfiscal" name="Nfiscal" required="required" class="form-control col-md-4 col-xs-4">
                         </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label col-md-3" for="unidadeMedida">
-                            Uni. medida <span class="required">*</span>
-                        </label>
-                        <div class="col-md-4">
-                            <input type="text" id="unidadeMedida" name="unidadeMedida" required="required" class="form-control col-md-4 col-xs-4">
-                        </div>
-                    </div>
+                    </div>                   
 
                     <div class="ln_solid"></div>
                     <div class="form-group">

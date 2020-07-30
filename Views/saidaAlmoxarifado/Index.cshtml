@@ -43,7 +43,8 @@
             <table id="datatableHUD" class="hover" style="width:100%">
                 <thead>
                     <tr style="background-color:white">
-                        <th>Código</th>
+                        <th>Código Saída</th>
+                        <th>Código Item</th>
                         <th>Descrição</th>
                         <th>Tag</th>
                         <th>Equipamento</th>
@@ -62,13 +63,16 @@
                             @Html.DisplayFor(modelItem => item.Id)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.item.Id)
+                        </td>
+                        <td>
                             @Html.DisplayFor(modelItem => item.item.descricao)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.equipamento.tag)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.equipamento.descricao)
+                            @Html.DisplayFor(modelItem => item.equipamento.descricao_equipamento)
                         </td>
                         <td>
                             @if (item.data.ToString() != "01/01/0001 00:00:00")
@@ -85,10 +89,10 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.solicitante)
-                        </td>                      
+                        </td>
                         <td>
-                            <a href="@Url.Action("Editar","SaidaAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
-                            <a href="@Url.Action("Delete","SaidaAlmoxarifado",new { id = item.Id,idItem = idItem })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>                           
+                            <a href="@Url.Action("Editar","SaidaAlmoxarifado" ,new { id = item.Id,idItem=idItem })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
+                            @*<a href="@Url.Action("Delete","SaidaAlmoxarifado",new { id = item.Id,idItem = idItem })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>*@
                         </td>
                     </tr>
 

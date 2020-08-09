@@ -45,6 +45,42 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="categoria">
+                            Categoria <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-4">
+                            <select class="form-control" name="categoria_id" id="categoria" required>
+
+                                <option value="" selected>SELECIONE</option>
+                                @{
+
+                                    foreach (var categoria in ViewBag.categoria)
+                                    {
+                                        if(Model.categoria != null)
+                                            {
+                                            if (Model.categoria.Id == categoria.Id)
+                                            {
+                                                <option selected value="@categoria.Id"> @categoria.nome </option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@categoria.Id"> @categoria.nome </option>
+                                            }
+                                        }
+                                        else
+                                        {
+                            <option value="@categoria.Id"> @categoria.nome </option>
+                                        }
+                                    }
+                                }
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
                         <label class="control-label col-md-3" for="endereco">
                             Endereço <span class="required">*</span>
                         </label>
@@ -59,13 +95,13 @@
                             Uni. medida <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="text" id="unidadeMedida" name="unidadeMedida" required="required" class="form-control col-md-4 col-xs-4" value="@Model.unidadeMedida" readonly>
+                            <input type="text" id="unidadeMedida" name="unidadeMedida" required="required" class="form-control col-md-4 col-xs-4" value="@Model.unidadeMedida">
                         </div>
                     </div>
 
                     <div class="ln_solid"></div>
                     <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">                            
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                             <button type="submit" class="btn btn-success">Editar</button>
                         </div>
                     </div>

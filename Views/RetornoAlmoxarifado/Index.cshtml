@@ -46,9 +46,10 @@
                         <th>Código Retorno</th>
                         <th>Código Item</th>
                         <th>Descrição</th>
-                        <th>data</th>
-                        <th>entrada</th>
+                        <th>Data</th>
+                        <th>Entrada</th>
                         <th>Responsável</th>
+                        <th>Data Cadastro</th>
 
                         <th></th>
                     </tr>
@@ -56,34 +57,40 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.item.descricao)
-                            </td>                            
-                            <td>
-                                @if (item.data.ToString() != "01/01/0001 00:00:00")
-                                {
-                                    @item.data.ToString("dd/MM/yyyy")
-                                }
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.item.descricao)
+                        </td>
+                        <td>
+                            @if (item.data.ToString() != "01/01/0001 00:00:00")
+                            {
+                                @item.data.ToString("dd/MM/yyyy")
+                            }
 
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.entrada)
-                            </td>                           
-                            <td>
-                                @item.responsavel
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Editar","RetornoAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
-                                <a href="@Url.Action("Delete","RetornoAlmoxarifado",new { id = item.Id,idItem = idItem })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>
-                            </td>
-                        </tr>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.entrada)
+                        </td>
+                        <td>
+                            @item.responsavel
+                        </td>
+                        <td>
+                            @if (item.dataCadastro.ToString() != "01/01/0001 00:00:00")
+                            {
+                                @item.dataCadastro.ToString("dd/MM/yyyy")
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Editar","RetornoAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
+                            <a href="@Url.Action("Delete","RetornoAlmoxarifado",new { id = item.Id,idItem = idItem })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>
+                        </td>
+                    </tr>
 
                     }
                 </tbody>

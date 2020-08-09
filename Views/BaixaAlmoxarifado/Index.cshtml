@@ -45,11 +45,12 @@
                     <tr style="background-color:white">
                         <th>Código Baixa</th>
                         <th>Código Item</th>
-                        <th>Descrição</th>
+                        <th>Descrição Item</th>
                         <th>data</th>
                         <th>Saída</th>
                         <th>Motivo</th>
                         <th>Solicitante</th>
+                        <th>Descrição</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -81,6 +82,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.solicitante)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descricao)
                         </td>
                         <td>
                             <a href="@Url.Action("Editar","BaixaAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>

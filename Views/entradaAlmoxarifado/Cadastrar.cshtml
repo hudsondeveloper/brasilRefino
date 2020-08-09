@@ -71,37 +71,32 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fornecedor">
-                            Fornecedor <span class="required">*</span>
+                        <label class="control-label col-md-3" for="notafiscal">
+                            Nº Nota <span class="required">*</span>
                         </label>
-                        <div class="col-md-4 col-sm-4 col-xs-4">
-                            <select class="form-control" name="fornecedor_id" id="fornecedor" required>
-
-                                <option value="" selected>SELECIONE</option>
-                                @{
-
-                                    foreach (var fornecedor in ViewBag.fornecedor)
-                                    {
-                                       <option value="@fornecedor.Id"> @fornecedor.nome </option>
-                                    }
-                                }
-
-                            </select>
+                        <div class="col-md-4">
+                            <input type="text" id="notafiscal" name="notafiscal" class="form-control col-md-4 col-xs-4" onblur="getFornecedor()">
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="nomeNota">
+                           Fornecedor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="nomeNota" name="nomeNota" class="form-control col-md-4 col-xs-4">
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="dataEmissao">
+                        <label class="control-label col-md-3" for="dataNota">
                             Data Emissão <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="date" id="dataEmissao" name="dataEmissao" class="form-control col-md-4 col-xs-4">
+                            <input type="date" id="dataNota" name="dataNota" class="form-control col-md-4 col-xs-4">
                         </div>
                     </div>
-
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="valorNota">
@@ -111,9 +106,6 @@
                             <input type="text" id="valorNota" name="valorNota" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4">
                         </div>
                     </div>
-
-
-
 
                     <div class="ln_solid"></div>
                     <div class="form-group">
@@ -127,6 +119,25 @@
     </div>
 </div>
 <script>
+
+
+        
+    function getFornecedor() {
+
+        var CodigoItem = $("#notafiscal").val();
+       
+            var url = '@Url.Action("GetFornecedor","EntradaAlmoxarifado")'+'?id='+CodigoItem;
+            fetch(url, {
+                method: "POST",
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                $("#nomeNota").val(data.nome)
+                $("#dataNota").val(data.data)
+                $("#valorNota").val(data.valor)                
+            })        
+    }
+
     function moeda(a, e, r, t) {
     let n = ""
       , h = j = 0

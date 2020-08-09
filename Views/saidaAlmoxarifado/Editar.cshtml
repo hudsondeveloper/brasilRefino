@@ -36,24 +36,34 @@
                 <br />
                 <form id="" data-parsley-validate class="form-horizontal form-label-left" action="@Url.Action("Editar","SaidaAlmoxarifado",new {idItem = idItem })" method="post">
 
-                    <input type="hidden" id="saida" name="equipamento_id" required="required" class="form-control col-md-4 col-xs-4" value="@Model.equipamento.Id">
+                    @if (Model.equipamento != null)
+                    {
+                        <input type="hidden" id="saida" name="equipamento_id" required="required" class="form-control col-md-4 col-xs-4" value="@Model.equipamento.Id">
+                    }
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="area">
                             Equipamento <span class="required">*</span>
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-4">
-                            <select class="form-control" name="equipamento" id="equipamento" required disabled>
+                            <select class="form-control" name="equipamento" id="equipamento" disabled>
 
                                 @{
                                     foreach (var equipamento in ViewBag.equipamento)
                                     {
-                                        if (Model.equipamento.Id == equipamento.Id)
+                                        if (Model.equipamento != null)
                                         {
-                                            <option selected value="@equipamento.Id">área - @equipamento.area.codigo | @equipamento.tag - @equipamento.descricao_equipamento  </option>
+                                            if (Model.equipamento.Id == equipamento.Id)
+                                            {
+                                                <option selected value="@equipamento.Id">área - @equipamento.area.codigo | @equipamento.tag - @equipamento.descricao_equipamento  </option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@equipamento.Id">área - @equipamento.area.codigo | @equipamento.tag - @equipamento.descricao_equipamento  </option>
+                                            }
                                         }
                                         else
                                         {
-                                            <option value="@equipamento.Id">área - @equipamento.area.codigo | @equipamento.tag - @equipamento.descricao_equipamento  </option>
+                                            <option value="" selected>SELECIONE</option>
                                         }
                                     }
                                 }
@@ -100,6 +110,16 @@
                             <input type="text" id="solicitante" name="solicitante" class="form-control col-md-4 col-xs-4" value="@Model.solicitante">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="descricao">
+                            Descrição <span class="required"></span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="descricao" name="descricao" class="form-control col-md-4 col-xs-4" value="@Model.descricao">
+                        </div>
+                    </div>
+
 
                     <div class="ln_solid"></div>
                     <div class="form-group">

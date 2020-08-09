@@ -3,7 +3,7 @@
     var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();
     string layout = "";
 
-    if (controller == "ItemAlmoxarifado" || controller == "EntradaAlmoxarifado" || controller == "SaidaAlmoxarifado" || controller == "RetornoAlmoxarifado" || controller =="BaixaAlmoxarifado" || controller =="Fornecedor")
+    if (controller == "ItemAlmoxarifado" || controller == "EntradaAlmoxarifado" || controller == "SaidaAlmoxarifado" || controller == "RetornoAlmoxarifado" || controller =="BaixaAlmoxarifado" || controller =="Fornecedor" || controller   == "Categoria")
     {
         layout = "~/Views/Shared/_LayoutControleEstoque.cshtml";
     }

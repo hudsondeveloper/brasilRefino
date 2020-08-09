@@ -45,9 +45,10 @@
                     <tr style="background-color:white">
                         <th>Código Saída</th>
                         <th>Código Item</th>
-                        <th>Descrição</th>
+                        <th>Descrição Item</th>
                         <th>Tag</th>
                         <th>Equipamento</th>
+                        <th>Descrição</th>
                         <th>data</th>
                         <th>Saída</th>
                         <th>Aplicação</th>
@@ -73,6 +74,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.equipamento.descricao_equipamento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descricao)
                         </td>
                         <td>
                             @if (item.data.ToString() != "01/01/0001 00:00:00")

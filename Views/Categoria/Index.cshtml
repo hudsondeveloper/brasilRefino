@@ -1,0 +1,86 @@
+﻿@model IEnumerable<B_R.Models.Categoria>
+
+@{
+    ViewBag.titulo = "Categoria";
+}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#datatableHUD").DataTable({
+            "language": {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "resultado não encontrado",
+                "sEmptyTable": "Nenhum dado disponivel nesta tabla",
+                "sInfo": "Mostrando registros de _START_ a _END_ de um total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros de 0 a 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+            },
+            dom: "Blfrtip",
+            buttons: [
+
+            ],
+            responsive: true,
+            "bPaginate": false
+        });
+    });
+
+
+</script>
+
+<a href="@Url.Action("Cadastrar","Categoria")" class="btn btn-app" style="width:100%">
+    <i class="fa fa-edit"></i> Adicionar
+</a>
+<div>
+    <table id="datatableHUD" class="hover" style="width:100%">
+        <thead>
+            <tr style="background-color:white">
+                <th>Código Categoria</th>
+                <th>Categoria</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nome)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Editar","Categoria",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
+
+                        <a href="@Url.Action("Delete","Categoria",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="excluir" class="fa fa-times fa-2x" onclick="del()"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+
+        </tfoot>
+    </table>
+</div>
+
+<script>
+function del(){
+  confirm("Tem certeza que deseja Excluir este item ?");
+}
+
+</script>
+
+
+
+
+
+
+
+
+

@@ -44,6 +44,7 @@
                     <tr style="background-color:white">
                         <th>Código Item</th>
                         <th>Descrição</th>
+                        <th>Categoria</th>
                         <th>End.</th>
                         <th>Entrada</th>
                         <th>Saída</th>
@@ -55,37 +56,40 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.descricao)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.endereco)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.entrada)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.saida)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.saldo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.unidadeMedida)
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Editar","ItemAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
-                                @*<a href="@Url.Action("Delete","ItemAlmoxarifado",new { id = item.Id })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>*@
-                                <a href="@Url.Action("Index","EntradaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="entrada" class="fa fa-arrow-up fa-2x"></i></a>
-                                <a href="@Url.Action("Index","SaidaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="saída" class="fa fa-arrow-down fa-2x"></i></a>
-                                <a href="@Url.Action("Index","RetornoAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="retorno" class="fa fa-retweet fa-2x"></i></a>
-                                <a href="@Url.Action("Index","BaixaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #b31313" ; title="baixa" class="fa fa-trash fa-2x"></i></a>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.categoria.nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.endereco)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.entrada)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.saida)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.saldo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.unidadeMedida)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Editar","ItemAlmoxarifado" ,new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
+                            @*<a href="@Url.Action("Delete","ItemAlmoxarifado",new { id = item.Id })" style="box-shadow:none" onclick="del()"><i style="color: #65ab81" ; title="delete" class="fa fa-trash fa-2x"></i></a>*@
+                            <a href="@Url.Action("Index","EntradaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="entrada" class="fa fa-arrow-up fa-2x"></i></a>
+                            <a href="@Url.Action("Index","SaidaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="saída" class="fa fa-arrow-down fa-2x"></i></a>
+                            <a href="@Url.Action("Index","RetornoAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #65ab81" ; title="retorno" class="fa fa-retweet fa-2x"></i></a>
+                            <a href="@Url.Action("Index","BaixaAlmoxarifado",new { idItem = item.Id })" style="box-shadow:none"><i style="color: #b31313" ; title="baixa" class="fa fa-trash fa-2x"></i></a>
+                        </td>
+                    </tr>
 
                     }
                 </tbody>

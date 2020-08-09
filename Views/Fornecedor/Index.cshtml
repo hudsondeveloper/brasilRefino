@@ -43,6 +43,11 @@
                 <th>Código Fornecedor</th>
                 <th>Nome</th>
                 <th>Nota Fiscal</th>
+                <th>Data Nota</th>
+                <th>Valor</th>
+                <th>Recebido</th>
+                <th>Quem recebeu</th>
+                <th>Data Recebido</th>
                 <th></th>
             </tr>
         </thead>
@@ -59,10 +64,35 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Nfiscal)
                 </td>
-                <td>                    
+                <td>
+                    @if (item.data.ToString() != "01/01/0001 00:00:00")
+                    {
+                        @item.data.ToString("dd/MM/yyyy")
+                    }
+                </td>
+                <td>
+                    @item.valor.ToString("C")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recebido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.recebidoUser)
+                </td>
+                <td>
+                    @if (item.recebidoData.ToString() != "01/01/0001 00:00:00")
+                    {
+                        @item.recebidoData.ToString("dd/MM/yyyy")
+                    }
+                </td>
+                <td>
                     <a href="@Url.Action("Editar","Fornecedor",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="editar" class="fa fa-edit fa-2x"></i></a>
 
                     <a href="@Url.Action("Delete","Fornecedor",new { id = item.Id })" style="box-shadow:none"><i style="color: #65ab81;" title="excluir" class="fa fa-times fa-2x" onclick="del()"></i></a>
+
+                    <a href="@Url.Action("Receber","Fornecedor",new { id = item.Id })" style="box-shadow:none"><i style="color: cornflowerblue;" title="receber" class="fa fa-arrow-circle-down fa-2x" onclick="receber()"></i></a>
+
+                    
                 </td>
             </tr>
             }
@@ -76,6 +106,10 @@
 <script>
 function del(){
   confirm("Tem certeza que deseja Excluir este item ?");
+    }
+
+    function receber(){
+  confirm("Tem certeza que deseja marcar este item como recebido ?");
 }
 
 </script>

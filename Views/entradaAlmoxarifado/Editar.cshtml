@@ -72,43 +72,31 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fornecedor">
-                            Fornecedor <span class="required">*</span>
+                        <label class="control-label col-md-3" for="notafiscal">
+                            Nº Nota <span class="required">*</span>
                         </label>
-                        <div class="col-md-4 col-sm-4 col-xs-4">
-                            <select class="form-control" name="fornecedor_id" id="fornecedor" required>
-
-                                <option value="" selected>SELECIONE</option>
-                                @{
-
-                                    foreach (var fornecedor in ViewBag.fornecedor)
-                                    {
-                                        if (Model.fornecedor.Id == fornecedor.Id)
-                                        {
-                                            <option selected value="@fornecedor.Id"> @fornecedor.nome </option>
-
-                                        }
-                                        else
-                                        {
-                                            <option  value="@fornecedor.Id"> @fornecedor.nome </option>
-                                        }
-                                    }
-                                }
-
-                            </select>
+                        <div class="col-md-4">
+                            <input type="text" id="notafiscal" name="notafiscal" class="form-control col-md-4 col-xs-4"value="@Model.notafiscal">
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="control-label col-md-3" for="nomeNota">
+                            Fornecedor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-4">
+                            <input type="text" id="nomeNota" name="nomeNota" class="form-control col-md-4 col-xs-4" value="@Model.nomeNota">
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="dataEmissao">
+                        <label class="control-label col-md-3" for="dataNota">
                             Data Emissão <span class="required">*</span>
                         </label>
                         <div class="col-md-4">
-                            <input type="date" id="dataEmissao" name="dataEmissao" class="form-control col-md-4 col-xs-4" value="@Model.dataEmissao.ToString("yyyy-MM-dd")">
+                            <input type="date" id="dataNota" name="dataNota" class="form-control col-md-4 col-xs-4" value="@Model.dataNota.ToString("yyyy-MM-dd")">
                         </div>
                     </div>
-
 
                     <div class="form-group">
                         <label class="control-label col-md-3" for="valorNota">
@@ -118,8 +106,6 @@
                             <input type="text" id="valorNota" name="valorNota" onKeyPress="return(moeda(this,'.',',',event))" class="form-control col-md-4 col-xs-4" value="@Model.valorNota">
                         </div>
                     </div>
-
-
 
 
                     <div class="ln_solid"></div>
